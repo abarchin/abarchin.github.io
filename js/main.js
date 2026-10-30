@@ -50,7 +50,7 @@ const reduce=matchMedia("(prefers-reduced-motion: reduce)").matches;
 const css=n=>getComputedStyle(document.documentElement).getPropertyValue(n).trim();
 const subsOf=m=>D[L].subs[m]||Object.keys(D[L].inv);
 
-const sounds=Object.fromEntries(["mode","tab","scroll","select","tuner","light_on","light_off"].map(name=>{
+const sounds=Object.fromEntries(["mode","tab","scroll","select","tuner","light_on","light_off","access_up","highlight"].map(name=>{
   const audio=new Audio(`assets/audio/ui_pipboy_${name}.wav`);audio.preload="auto";audio.volume=.35;return [name,audio];
 }));
 let soundEnabled=true,activeSound;
@@ -58,30 +58,48 @@ try{soundEnabled=localStorage.getItem("pipboy-sound")!=="off"}
 catch(error){console.warn("Could not read sound preference:",error)}
 function updateSoundButton(){const button=$("sound-toggle"),d=D[L];
   button.setAttribute("aria-pressed",String(soundEnabled));button.setAttribute("aria-label",d.sound);button.title=soundEnabled?d.mute:d.unmute;
+  if(!soundEnabled&&$("boot-sound"))$("boot-sound").hidden=true;
 }
-function playSound(name){if(!soundEnabled)return;
+function playSound(name,onStart){if(!soundEnabled)return;
   if(activeSound){activeSound.pause();activeSound.currentTime=0}
   activeSound=sounds[name];activeSound.currentTime=0;
-  activeSound.play().catch(error=>{if(error.name!=="AbortError")console.warn(`Could not play ${name} sound:`,error)});
+  activeSound.play().then(onStart,error=>{
+    if(error.name==="NotAllowedError"&&name==="access_up"){
+      if($("boot-sound")&&soundEnabled)$("boot-sound").hidden=false;
+    }else if(error.name!=="AbortError")console.warn(`Could not play ${name} sound:`,error);
+  });
 }
 $("sound-toggle").onclick=()=>{
   soundEnabled=!soundEnabled;
   if(!soundEnabled&&activeSound){activeSound.pause();activeSound.currentTime=0}
   try{localStorage.setItem("pipboy-sound",soundEnabled?"on":"off")}
   catch(error){console.warn("Could not save sound preference:",error)}
-  updateSoundButton();if(soundEnabled)playSound("select");
+  updateSoundButton();if(soundEnabled){if($("boot"))startBoot();else playSound("select")}
 };
 
-let bootTimer;
+let bootTimer,bootAudioStarted=false;
+function startBoot(){
+  const boot=$("boot");if(!boot)return;
+  clearTimeout(bootTimer);bootAudioStarted=false;$("boot-sound").hidden=true;
+  boot.classList.add("booting");
+  for(const animation of boot.getAnimations({subtree:true})){animation.currentTime=0;animation.play()}
+  bootTimer=setTimeout(finishBoot,2000);
+  playSound("access_up",()=>{bootAudioStarted=true});
+}
 function finishBoot(){
   clearTimeout(bootTimer);
   const boot=$("boot");if(!boot)return;
+  activeSound?.pause();bootAudioStarted=false;
   const restoreFocus=boot.contains(document.activeElement);
   boot.remove();
   for(const id of ["hud","main","subs"])$(id).inert=false;
   if(restoreFocus)$("sub-"+sub).focus({preventScroll:true});
 }
 $("boot-skip").onclick=()=>{finishBoot();playSound("select")};
+$("boot-sound").onclick=startBoot;
+$("boot").addEventListener("animationstart",e=>{
+  if(e.animationName==="boot-line"&&e.target.dataset.bootSound&&bootAudioStarted)playSound(e.target.dataset.bootSound);
+});
 
 // Fit the existing desktop UI into the reference casing without clipping its HUD.
 new ResizeObserver(([entry])=>{
@@ -155,7 +173,7 @@ function drawOsc(k){const c=$("osc"),x=c.getContext("2d"),G=css("--phos");let t=
 }
 function setMode(m){finishBoot();mode=(m+3)%3;sub=0;sel=0;render();playSound("mode")}
 function setSub(s){finishBoot();const n=subsOf(mode).length;sub=(s+n)%n;sel=0;render();playSound("tab")}
-function setSel(i,dir=1,sound="scroll"){finishBoot();const n=items().length;if(!n)return;sel=(i+n)%n;wheelPos+=dir*10;$("wheel").style.backgroundPosition=`0 0,0 ${wheelPos}px`;render();$("item-"+sel)?.focus({preventScroll:true});playSound(mode===2&&sub===2?"tuner":sound)}
+function setSel(i,dir=1,sound="scroll"){finishBoot();wheelPos+=dir*10;$("wheel").style.setProperty("--wheel-offset",`${wheelPos}px`);const n=items().length;if(!n)return;sel=(i+n)%n;render();$("item-"+sel)?.focus({preventScroll:true});playSound(mode===2&&sub===2?"tuner":sound)}
 $("btns").addEventListener("click",e=>{const b=e.target.closest("button[data-m]");if(b)setMode(+b.dataset.m)});
 $("subs").addEventListener("click",e=>{const b=e.target.closest("button[data-s]");if(b)setSub(+b.dataset.s)});
 $("hud").addEventListener("click",e=>{const b=e.target.closest("button[data-l]");if(b){L=b.dataset.l;document.documentElement.lang=L;render();playSound("select")}});
@@ -174,4 +192,4 @@ addEventListener("keydown",e=>{if(e.target.closest("a"))return;const k=e.key;
   if(k==="ArrowDown"){e.preventDefault();setSel(sel+1)}if(k==="ArrowUp"){e.preventDefault();setSel(sel-1,-1)}});
 setInterval(()=>{const c=$("clock");if(c)c.textContent=new Date().toTimeString().slice(0,5)},10000);
 render();
-if(reduce)finishBoot();else{$("boot").classList.add("booting");bootTimer=setTimeout(finishBoot,2000)}
+if(reduce)finishBoot();else startBoot();

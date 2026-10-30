@@ -39,11 +39,14 @@
           <p class="boot-brand">PIP-BOY 3000</p>
           <p class="boot-version">PERSONAL INFORMATION PROCESSOR</p>
           <p class="boot-line" style="--delay:.35s">[OK] MEMORY CHECK</p>
-          <p class="boot-line" style="--delay:.7s">[OK] DISPLAY INITIALIZED</p>
-          <p class="boot-line" style="--delay:1.05s">[OK] PERSONNEL FILE LOADED</p>
-          <p class="boot-line boot-ready" style="--delay:1.45s">SYSTEM READY _</p>
+          <p class="boot-line" style="--delay:.7s" data-boot-sound="highlight">[OK] DISPLAY INITIALIZED</p>
+          <p class="boot-line" style="--delay:1.05s" data-boot-sound="highlight">[OK] PERSONNEL FILE LOADED</p>
+          <p class="boot-line boot-ready" style="--delay:1.45s" data-boot-sound="select">SYSTEM READY _</p>
         </div>
-        <button id="boot-skip" type="button">Skip startup</button>
+        <div class="boot-actions">
+          <button id="boot-sound" type="button" aria-label="Restart startup with sound" hidden>Sound on</button>
+          <button id="boot-skip" type="button">Skip startup</button>
+        </div>
       </div>
       <header class="hud" id="hud" inert></header>
       <main id="main" inert><div class="list" id="list"></div><div class="detail" id="detail" aria-live="polite"></div></main>

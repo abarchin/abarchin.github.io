@@ -121,7 +121,7 @@
     </g>
     <path id="gauge-major-tick" d="M0-24V-32"/>
     <path id="gauge-minor-tick" d="M0-28V-32"/>
-    <path id="radiation-needle" d="M4-2.5 24-15" stroke="#762c23" stroke-width="2" stroke-opacity=".85"/>
+    <path id="radiation-needle" d="M4 0H28" stroke="#762c23" stroke-width="2" stroke-opacity=".85"/>
     <path id="selector-tick" d="M0-43V-51"/>
     <!-- A same-material inset pointer preserves the grip's circular outline. -->
     <g id="selector-knob" filter="url(#shadow)">
@@ -223,7 +223,7 @@
       </g>
     </g>
     <g fill="#243a27" font-family="monospace" font-size="6" font-weight="bold" text-anchor="middle">
-      <text x="8" y="-17">100</text><text x="17" y="4">50</text><text x="6" y="21">0</text>
+      <text x="8" y="-17">100</text><text x="17" y="-3">50</text><text x="6" y="21">0</text>
     </g>
     <circle r="4" fill="#283a29"/>
     <path d="M-5-38C-50-34-51 31-5 38z" fill="url(#steel)" stroke="#82907c" stroke-width="1"/>

@@ -8,4 +8,4 @@ Files supplied by the site owner, who confirmed permission for public
 redistribution. Original filenames and audio are retained.
 All rights to the original sounds remain with their respective owners.
 
-Only short interaction effects are included; no music or ambient loops.
+Only short interaction and startup effects are included; no music or ambient loops.
