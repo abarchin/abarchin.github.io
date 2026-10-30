@@ -245,8 +245,8 @@
     <text x="146" y="214" fill="#a6b29d" font-family="Georgia,serif" font-size="18" font-style="italic" font-weight="bold" text-anchor="middle">Pip-Boy</text>
     <use href="#vent" x="77" y="228"/><use href="#vent" x="77" y="251"/>
     <use href="#vent" x="77" y="274"/><use href="#vent" x="77" y="297"/>
-    <rect id="model-plate" x="97" y="319" width="107" height="18" rx="2" fill="#202c20" stroke="#5b6851"/>
-    <text x="150" y="331" fill="#bbc3a8" font-family="monospace" font-size="9" text-anchor="middle">· Model 3000 ·</text>
+    <rect id="model-plate" x="97" y="317" width="107" height="18" rx="2" fill="#202c20" stroke="#5b6851"/>
+    <text x="150" y="329" fill="#bbc3a8" font-family="monospace" font-size="9" text-anchor="middle">· Model 3000 ·</text>
 
     <rect x="227" y="178" width="44" height="180" rx="7" fill="url(#rim)" stroke="#273323" stroke-width="3"/>
     <rect x="233" y="196" width="33" height="139" rx="5" fill="url(#steel)" stroke="#101c13" stroke-width="3"/>
@@ -301,9 +301,9 @@
     <path d="m407 497 206-1M412 617h202" stroke="#8b9176" stroke-opacity=".3" stroke-width="2"/>
     <use href="#slot" x="435" y="507"/><use href="#slot" x="487" y="507"/>
     <use href="#slot" x="539" y="507"/><use href="#slot" x="591" y="507"/>
-    <path d="m380 400 12 1 9 231-13 1z" fill="url(#rim)" stroke="#2d3f30" stroke-width="2"/>
-    <path d="m622 400 11 1 7 230-13 2z" fill="url(#rim)" stroke="#2d3f30" stroke-width="2"/>
-    <path d="m383 408 8 215m234-215 8 216" stroke="#b3baa4" stroke-opacity=".3" stroke-width="1.5"/>
+    <rect id="switch-rail-left" x="380" y="400" width="13" height="233" fill="url(#rim)" stroke="#2d3f30" stroke-width="2"/>
+    <rect id="switch-rail-right" x="622" y="400" width="13" height="233" fill="url(#rim)" stroke="#2d3f30" stroke-width="2"/>
+    <path d="M383 408V623M625 408V624" stroke="#b3baa4" stroke-opacity=".3" stroke-width="1.5"/>
   </g>
   <g fill="#b7a86a" font-family="monospace" font-size="10" font-weight="bold" text-anchor="middle">
     <text x="453" y="425">STATS</text><text x="506" y="425">ITEMS</text><text x="560" y="425">DATA</text>
@@ -324,7 +324,7 @@
     <g fill="#766244" fill-opacity=".18" stroke="#493b29" stroke-opacity=".25" stroke-width="2">
       <path d="m71 181 11-21 9 3-7 30-14 4zm5 152 20 2-8 30-13-9zm18 156 12-2 8 18-20-4z"/>
       <path d="m288 69 73-2-3 8-49 3-23 8zm486 271 38-1-1 19-16-4-4 28-14-9z"/>
-      <path d="m378 401 13-1 5 82-12 2zm243-1 12 1 2 72-9 3zm-211 91 28-2-5 9-27 3z"/>
+      <path d="M378 401 391 400V483L378 484ZM621 400 633 401V474L621 476ZM410 491l28-2-5 9-27 3z"/>
     </g>
     <g fill="url(#steel)" opacity=".65">
       <path d="m75 180 5-13 5 1-1 10 4 3-5 7-7-2-4 6-3-2zm9-25 3-7 4 2-3 7z"/>
@@ -338,15 +338,15 @@
       <path d="m791 367 7-6 5 5-4 11-7 1zm16 22 5-3-1 13-6 2zm-26 33 7 1-2 15-5-3z"/>
       <path d="m856 161 6 3-1 36-5-2-1-14zm-5 73 6-3-2 36-4 1zm-3 189 4-3 1 29-6 9z"/>
       <path d="m851 535 8-4 2 5-11 11-3-4zm11 13 18-13 6 1-7 8-15 10z"/>
-      <path d="m382 401 6 1 1 28-4 7-3-13zm2 45 5-2 3 19-4 13-4-8zm3 62 5-6 2 27-5 8z"/>
-      <path d="m391 582 5-4 3 41-6 4zm233-180 6 3 1 20-5 6zm2 57 7-1 2 22-5 8-4-14z"/>
-      <path d="m629 522 6-5 2 38-5 9zm3 71 7-3 1 33-6-1zm-222-99 16-3 8 3-7 3-17 2z"/>
+      <path d="M382 401l6 1 1 28-4 7-3-13zM382 446l5-2 3 19-4 13-4-8zM383 508l5-6 2 27-5 8z"/>
+      <path d="M384 582l5-4 3 41-6 4zM624 402l6 3 1 20-5 6zM624 459l7-1 2 22-5 8-4-14z"/>
+      <path d="M625 522l6-5 2 38-5 9zM625 593l7-3 1 33-6-1zM410 494l16-3 8 3-7 3-17 2z"/>
       <path d="m467 491 18-2 4 4-16 2zm84 2 15-3 10 3-4 3-17 1zm-136 122 19-1 4 5-22 1z"/>
     </g>
     <g fill="none" stroke="url(#steel)" stroke-width="2.5" stroke-opacity=".55">
       <path d="M78 228h37m43 0h19M82 253h18M172 277h28M80 299h16m40 0h24"/>
       <path d="m239 196 20 1m-25 5v102m8 26 17-1M298 453h30m14 0h12M681 453h29q29-1 33-24"/>
-      <path d="M50 182 45 282M45 338 46 424M293 479V623M381 412 386 610M626 423 630 564"/>
+      <path d="M50 182 45 282M45 338 46 424M293 479V623M381 412V610M626 423V564"/>
     </g>
   </g>
   <g stroke="#a7b5a0" stroke-opacity=".3" stroke-linecap="square" mask="url(#worn)">

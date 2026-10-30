@@ -179,7 +179,7 @@ nav.subs::before{content:"";position:absolute;left:26px;right:26px;top:0;height:
   .screw,.nameplate,.vents,.scale,.side-label,.hood,.slots,.clamp{display:none}
   .panel,.selector,.wheel-slot,.module{display:contents}
   .gauge{display:block;position:absolute;left:12.315789%;top:12%;width:9.894737%;height:auto;aspect-ratio:94/96;overflow:visible;pointer-events:none}
-  .model{position:absolute;left:10.210526%;top:46.814815%;width:11.263158%;height:3.555556%;padding:0;
+  .model{position:absolute;left:10.210526%;top:46.518519%;width:11.263158%;height:3.555556%;padding:0;
     border:0;background:none;box-shadow:none;color:transparent}
   .bezel{position:absolute;left:32.63%;top:17.78%;width:41.68%;height:41.48%;
     padding:0;border-radius:0;background:none;box-shadow:none}
