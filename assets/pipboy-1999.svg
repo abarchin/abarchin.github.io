@@ -226,8 +226,8 @@
       <text x="5" y="-6" font-size="4.2">x100</text>
     </g>
     <!-- Radiation trefoil printed on the face: black blades on an off-white disc. -->
-    <circle cx="3.6" cy="12.8" r="3.8" fill="#e6e4d2" stroke="#16190f" stroke-width=".55"/>
-    <g fill="#16190f"><circle cx="3.6" cy="12.8" r=".7"/><path d="M4.17 11.80L5.20 10.03A3.2 3.2 0 0 1 6.80 12.80L4.75 12.80A1.15 1.15 0 0 0 4.17 11.80ZM4.17 13.80L5.20 15.57A3.2 3.2 0 0 1 2.00 15.57L3.02 13.80A1.15 1.15 0 0 0 4.17 13.80ZM2.45 12.80L0.40 12.80A3.2 3.2 0 0 1 2.00 10.03L3.02 11.80A1.15 1.15 0 0 0 2.45 12.80Z"/></g>
+    <circle cx="4.0" cy="12.2" r="3.8" fill="#e6e4d2" stroke="#16190f" stroke-width=".55"/>
+    <g fill="#16190f"><circle cx="4.0" cy="12.2" r=".7"/><path d="M4.58 11.20L5.60 9.43A3.2 3.2 0 0 1 7.20 12.20L5.15 12.20A1.15 1.15 0 0 0 4.58 11.20ZM4.58 13.20L5.60 14.97A3.2 3.2 0 0 1 2.40 14.97L3.42 13.20A1.15 1.15 0 0 0 4.58 13.20ZM2.85 12.20L0.80 12.20A3.2 3.2 0 0 1 2.40 9.43L3.42 11.20A1.15 1.15 0 0 0 2.85 12.20Z"/></g>
     <circle r="4" fill="#14170f"/>
     <path d="M-5-38C-50-34-51 31-5 38z" fill="url(#steel)" stroke="#82907c" stroke-width="1"/>
     <path d="M-11-32v62" stroke="#253d30" stroke-width="2"/>
