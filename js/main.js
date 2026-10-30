@@ -50,6 +50,11 @@ const reduce=matchMedia("(prefers-reduced-motion: reduce)").matches;
 const css=n=>getComputedStyle(document.documentElement).getPropertyValue(n).trim();
 const subsOf=m=>D[L].subs[m]||Object.keys(D[L].inv);
 
+// Fit the existing desktop UI into the reference casing without clipping its HUD.
+new ResizeObserver(([entry])=>{
+  $("unit").style.setProperty("--screen-scale",Math.min(1,entry.contentRect.width/680));
+}).observe(document.querySelector(".bezel"));
+
 // worn paint: dark grime speckle plus a few chips showing bare steel
 (()=>{const c=document.createElement("canvas");c.width=c.height=256;const x=c.getContext("2d");
   for(let i=0;i<2200;i++){x.fillStyle=`rgba(0,0,0,${Math.random()*.18})`;x.fillRect(Math.random()*256,Math.random()*256,1+Math.random()*2,1+Math.random()*2)}

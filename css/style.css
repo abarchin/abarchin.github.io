@@ -139,6 +139,30 @@ nav.subs::before{content:"";position:absolute;left:26px;right:26px;top:0;height:
 
 @media (max-width:1000px){.unit{grid-template-columns:160px 36px minmax(0,1fr)}.clamp,.screw.r{display:none}.unit{grid-template-areas:"left wheel hood" "left wheel screen" "left wheel module"}
   .selector{transform:scale(.85);transform-origin:center bottom}header.hud .loc{display:none}}
+/* Native 950 x 675 casing; hotspots follow the photographed controls.
+   Phones retain the screen-first layout below. */
+@media (min-width:761px){
+  body::after{display:none}
+  .unit{display:block;width:min(1600px,100%,calc((100dvh - 28px) * 950 / 675));height:auto;aspect-ratio:950/675;
+    padding:0;border-radius:0;background:url("../assets/pipboy-3000.webp") center/100% 100% no-repeat;box-shadow:none}
+  .screw,.gauge,.nameplate,.vents,.model,.scale,.side-label,.hood,.slots,.clamp{display:none}
+  .panel,.selector,.wheel-slot,.module{display:contents}
+  .bezel{position:absolute;left:32.63%;top:17.78%;width:41.68%;height:41.48%;
+    padding:0;border-radius:0;background:none;box-shadow:none}
+  .screen{zoom:var(--screen-scale,1)}
+  .selector .knob,.wheel,.flash{position:absolute;inset:auto;margin:0;padding:0;border:0;
+    background:none;box-shadow:none}
+  .selector .knob{left:10.53%;top:52.59%;width:7.37%;height:auto;aspect-ratio:1}
+  .selector .knob::after{display:none}
+  .wheel{left:25.05%;top:30.22%;width:2.53%;height:18.81%}
+  .flash{left:22.95%;top:66.67%;width:2.84%;height:auto;aspect-ratio:1}
+  .flash[aria-pressed="true"]{background:rgba(255,240,170,.35);box-shadow:0 0 24px rgba(255,240,170,.65)}
+  .btns{position:absolute;left:44.84%;top:64%;width:17.05%;height:5.63%;gap:0}
+  .btn{width:100%;height:100%;display:grid;place-items:center}
+  .btn label{position:absolute;width:1px;height:1px;padding:0;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+  .btn button{width:66.67%;height:auto;aspect-ratio:1;background:none;box-shadow:none}
+  .btn button[aria-pressed="true"]{background:rgba(255,200,100,.2);transform:none;box-shadow:0 0 18px 4px rgba(255,138,26,.5)}
+}
 @media (max-width:760px){
   body{padding-block:8px;place-items:stretch}
   body::after{display:none}
