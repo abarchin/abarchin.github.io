@@ -1,0 +1,11 @@
+Fallout 3 user-interface sound effects
+Bethesda Game Studios / Bethesda Softworks
+
+Pack: PC / Computer - Fallout 3 - Miscellaneous - User Interface
+Source: https://sounds.spriters-resource.com/pc_computer/fallout3/asset/400557/
+
+Files supplied by the site owner, who confirmed permission for public
+redistribution. Original filenames and audio are retained.
+All rights to the original sounds remain with their respective owners.
+
+Only short interaction effects are included; no music or ambient loops.

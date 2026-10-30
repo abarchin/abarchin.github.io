@@ -15,7 +15,7 @@ const D={
   active:"ACTIVE",done:"COMPLETE",now:"Present",
   map:{sub:"Madrid region · base of operations",note:"Open to hybrid and remote roles."},
   stations:[["Email","email"],["LinkedIn","linkedin"],["GitHub","github"],["CV (PDF)","cv"]],tune:"Tune a station to open the channel.",cv:"Download CV (PDF)",pdf:"cv/alvaro-barchin-rubio-resume.pdf",
-  lvl:"LVL",yrs:"YRS"},
+  lvl:"LVL",yrs:"YRS",sound:"Sound effects",mute:"Mute sound effects",unmute:"Unmute sound effects"},
  es:{modes:["STATS","ITEMS","DATA"],subs:[["Estado","Logros","Formación"],null,["Misiones","Mapa local","Radio"]],
   role:"Ingeniero de Software",summary:"Ingeniero de Software centrado en arquitectura backend y DevOps. Actualmente expandiendo mi trabajo con sistemas RAG y aplicaciones de IA, con una trayectoria demostrada en la automatización de flujos de producción en AWS y pipelines de CI/CD.",
   perks:[["Cero Caídas","-40%","Downtime reducido con despliegues en contenedores Docker.","Vodafone"],["Desenfundado Rápido","+30%","Mayor velocidad de ejecución en APIs REST seguras en Python y Java.","Vodafone"],["Experto en Eficiencia","+15%","Eficiencia operativa con un sistema full-stack de gestión de empleados.","Afronta"]],
@@ -30,7 +30,7 @@ const D={
   active:"ACTIVA",done:"COMPLETADA",now:"Actualidad",
   map:{sub:"Comunidad de Madrid · base de operaciones",note:"Abierto a puestos híbridos y remotos."},
   stations:[["Email","email"],["LinkedIn","linkedin"],["GitHub","github"],["CV (PDF)","cv"]],tune:"Sintoniza una emisora para abrir el canal.",cv:"Descargar CV (PDF)",pdf:"cv/alvaro-barchin-rubio-curriculum.pdf",
-  lvl:"NVL",yrs:"AÑOS"}
+  lvl:"NVL",yrs:"AÑOS",sound:"Efectos de sonido",mute:"Silenciar efectos de sonido",unmute:"Activar efectos de sonido"}
 };
 D.en.jobs=[
  {co:"Thoughtworks",role:"Software Engineer",from:"Jan 2025",to:null,b:["Architected and led the end-to-end development of an AI RAG system using ChromaDB and FastAPI, integrating Jira, GitHub and ServiceNow into an internal knowledge base.","Deployed a full-stack AI solution with a Vercel web UI and AWS infrastructure, with automated security and code quality scans.","Engineered the production path for a major automotive sales application in Kotlin, using Datadog, Kafka and AWS for observability and debugging."]},
@@ -49,6 +49,28 @@ const esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",
 const reduce=matchMedia("(prefers-reduced-motion: reduce)").matches;
 const css=n=>getComputedStyle(document.documentElement).getPropertyValue(n).trim();
 const subsOf=m=>D[L].subs[m]||Object.keys(D[L].inv);
+
+const sounds=Object.fromEntries(["mode","tab","scroll","select","tuner","light_on","light_off"].map(name=>{
+  const audio=new Audio(`assets/audio/ui_pipboy_${name}.wav`);audio.preload="auto";audio.volume=.35;return [name,audio];
+}));
+let soundEnabled=true,activeSound;
+try{soundEnabled=localStorage.getItem("pipboy-sound")!=="off"}
+catch(error){console.warn("Could not read sound preference:",error)}
+function updateSoundButton(){const button=$("sound-toggle"),d=D[L];
+  button.setAttribute("aria-pressed",String(soundEnabled));button.setAttribute("aria-label",d.sound);button.title=soundEnabled?d.mute:d.unmute;
+}
+function playSound(name){if(!soundEnabled)return;
+  if(activeSound){activeSound.pause();activeSound.currentTime=0}
+  activeSound=sounds[name];activeSound.currentTime=0;
+  activeSound.play().catch(error=>{if(error.name!=="AbortError")console.warn(`Could not play ${name} sound:`,error)});
+}
+$("sound-toggle").onclick=()=>{
+  soundEnabled=!soundEnabled;
+  if(!soundEnabled&&activeSound){activeSound.pause();activeSound.currentTime=0}
+  try{localStorage.setItem("pipboy-sound",soundEnabled?"on":"off")}
+  catch(error){console.warn("Could not save sound preference:",error)}
+  updateSoundButton();if(soundEnabled)playSound("select");
+};
 
 // Fit the existing desktop UI into the reference casing without clipping its HUD.
 new ResizeObserver(([entry])=>{
@@ -69,7 +91,7 @@ function items(){const d=D[L];
   if(sub===2)return d.stations.map(s=>s[0]);
   return [];
 }
-function render(){const d=D[L];cancelAnimationFrame(raf);
+function render(){const d=D[L];cancelAnimationFrame(raf);updateSoundButton();
   const y=(Date.now()-START)/(365.25*864e5),yrs=Math.floor(y),now=new Date();
   $("hud").innerHTML=`<span class="mode">${d.modes[mode]}</span><span class="hl"><span>${d.lvl} ${yrs}</span><span>XP <span class="xp"><i style="width:${Math.round(y%1*100)}%"></i></span></span><span class="yrs">${yrs} ${d.yrs}</span><span class="loc">ALCALÁ</span><span class="clock" id="clock">${now.toTimeString().slice(0,5)}</span><span class="lang" role="group" aria-label="Language"><button id="lang-en" aria-pressed="${L==="en"}" data-l="en">EN</button><button id="lang-es" aria-pressed="${L==="es"}" data-l="es">ES</button></span></span>`;
   $("btns").innerHTML=d.modes.map((m,i)=>`<div class="btn"><label for="btn-${i}">${m}</label><button id="btn-${i}" data-m="${i}" aria-pressed="${i===mode}" aria-label="${m}"></button></div>`).join("");
@@ -117,17 +139,18 @@ function drawOsc(k){const c=$("osc"),x=c.getContext("2d"),G=css("--phos");let t=
     for(let i=0;i<=640;i+=3){const u=i/640,y=180+Math.sin(u*Math.PI*2*f+t)*a*135*Math.sin(u*Math.PI)+Math.sin(u*40+t*3)*6;i?x.lineTo(i,y):x.moveTo(i,y)}
     x.stroke();x.shadowBlur=0;t+=.06;if(!reduce)raf=requestAnimationFrame(frame)};frame();
 }
-function setMode(m){mode=(m+3)%3;sub=0;sel=0;render()}
-function setSub(s){const n=subsOf(mode).length;sub=(s+n)%n;sel=0;knobDeg+=45;$("knob").style.transform=`rotate(${knobDeg}deg)`;render()}
-function setSel(i,dir=1){const n=items().length;if(!n)return;sel=(i+n)%n;wheelPos+=dir*10;$("wheel").style.backgroundPosition=`0 0,0 ${wheelPos}px`;render();$("item-"+sel)?.focus({preventScroll:true})}
+function setMode(m){mode=(m+3)%3;sub=0;sel=0;render();playSound("mode")}
+function setSub(s){const n=subsOf(mode).length;sub=(s+n)%n;sel=0;knobDeg+=45;$("knob").style.transform=`rotate(${knobDeg}deg)`;render();playSound("tab")}
+function setSel(i,dir=1,sound="scroll"){const n=items().length;if(!n)return;sel=(i+n)%n;wheelPos+=dir*10;$("wheel").style.backgroundPosition=`0 0,0 ${wheelPos}px`;render();$("item-"+sel)?.focus({preventScroll:true});playSound(mode===2&&sub===2?"tuner":sound)}
 $("btns").addEventListener("click",e=>{const b=e.target.closest("button[data-m]");if(b)setMode(+b.dataset.m)});
 $("subs").addEventListener("click",e=>{const b=e.target.closest("button[data-s]");if(b)setSub(+b.dataset.s)});
-$("hud").addEventListener("click",e=>{const b=e.target.closest("button[data-l]");if(b){L=b.dataset.l;document.documentElement.lang=L;render()}});
-$("list").addEventListener("click",e=>{const b=e.target.closest("button[data-i]");if(b)setSel(+b.dataset.i)});
+$("hud").addEventListener("click",e=>{const b=e.target.closest("button[data-l]");if(b){L=b.dataset.l;document.documentElement.lang=L;render();playSound("select")}});
+$("list").addEventListener("click",e=>{const b=e.target.closest("button[data-i]");if(b)setSel(+b.dataset.i,1,"select")});
+$("detail").addEventListener("click",e=>{if(e.target.closest("a"))playSound("select")});
 $("knob").onclick=()=>setSub(sub+1);
 $("wheel").onclick=()=>setSel(sel+1);
 $("wheel").addEventListener("wheel",e=>{e.preventDefault();const d=Math.sign(e.deltaY);if(d)setSel(sel+d,d)},{passive:false});
-$("flash").onclick=e=>{const on=e.currentTarget.getAttribute("aria-pressed")!=="true";e.currentTarget.setAttribute("aria-pressed",on);$("unit").classList.toggle("lit",on)};
+$("flash").onclick=e=>{const on=e.currentTarget.getAttribute("aria-pressed")!=="true";e.currentTarget.setAttribute("aria-pressed",on);$("unit").classList.toggle("lit",on);playSound(on?"light_on":"light_off")};
 addEventListener("keydown",e=>{if(e.target.closest("a"))return;const k=e.key;
   if(k==="1"||k==="2"||k==="3")setMode(+k-1);if(k==="ArrowRight")setSub(sub+1);if(k==="ArrowLeft")setSub(sub-1);
   if(k==="ArrowDown"){e.preventDefault();setSel(sel+1)}if(k==="ArrowUp"){e.preventDefault();setSel(sel-1,-1)}});
