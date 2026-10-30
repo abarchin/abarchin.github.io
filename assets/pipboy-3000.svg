@@ -287,7 +287,8 @@
     <circle r="16" fill="url(#steel)" stroke="#293b2d" stroke-width="1.5"/>
     <circle r="12" fill="url(#steel)" stroke="#80917c" stroke-width=".8"/>
     <circle r="9" fill="url(#dial)" stroke="#7b8a77" stroke-width="1.2"/>
-    <circle r="5" fill="url(#steel)" stroke="#50654f"/>
+    <path id="lamp-symbol" d="M-2 3h4m-3 3h2M-2 1c0-1.5-2-2-2-4a4 4 0 0 1 8 0c0 2-2 2.5-2 4Z"
+      stroke="#c2c0a0" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round"/>
     <path d="m-12-6 4-5m-1-2 6-1m-8 25 4 2" stroke="#afbaa4" stroke-opacity=".5"/>
     <circle r="14" fill="url(#soot)" opacity=".4"/>
   </g>

@@ -67,7 +67,7 @@ body::after{content:"";position:absolute;left:0;right:0;top:50%;height:min(56vh,
   background:radial-gradient(circle at 40% 32%,#4a4b44,#16160f 70%);box-shadow:0 6px 0 #0a0a07,0 0 0 4px #2a2a22,0 0 0 6px #5d5f52;transition:transform .35s cubic-bezier(.3,1.6,.5,1)}
 .selector .knob::after{content:"";position:absolute;left:50%;top:8px;width:8px;height:30px;margin-left:-4px;border-radius:4px;background:linear-gradient(#5b5c52,#2c2d26);box-shadow:inset 0 1px 0 rgba(255,255,255,.2)}
 .side-label{font:10px var(--body);letter-spacing:.2em;color:var(--label);opacity:.85}
-.flash{width:30px;height:30px;border-radius:50%;border:0;padding:0;cursor:pointer;flex:none;margin-bottom:4px;
+.flash{width:30px;height:30px;border-radius:50%;border:0;padding:0;cursor:pointer;flex:none;margin-bottom:4px;-webkit-tap-highlight-color:transparent;
   background:radial-gradient(circle at 40% 35%,#9a9c90,#3c3d34 60%);box-shadow:0 0 0 4px #24241c,0 3px 0 5px #0d0d09}
 .flash[aria-pressed="true"]{background:radial-gradient(circle at 40% 35%,#fffbe0,#e8d98a 50%,#8a7a3a);box-shadow:0 0 0 4px #24241c,0 0 30px 8px rgba(255,240,170,.45)}
 
@@ -195,8 +195,12 @@ nav.subs::before{content:"";position:absolute;left:26px;right:26px;top:0;height:
       linear-gradient(to bottom,#8e845b 0 12.5%,#c5b780 12.5% 25%,#8e845b 25% 37.5%,#2b3427 37.5% 75%,#786e48 75% 87.5%,#8e845b 87.5%);
     background-size:100% 100%,100% 6.557377%;background-repeat:no-repeat,repeat-y;
     background-position:0 0,0 var(--wheel-offset,0px);transition:background-position .25s}
-  .flash{left:22.95%;top:66.67%;width:2.84%;height:auto;aspect-ratio:1}
-  .flash[aria-pressed="true"]{background:rgba(255,240,170,.35);box-shadow:0 0 24px rgba(255,240,170,.65)}
+  .flash{left:22.95%;top:66.67%;width:2.84%;height:auto;aspect-ratio:1;
+    background:rgba(255,240,170,.04);box-shadow:inset 0 0 0 1px rgba(255,240,170,.2)}
+  .flash:hover,.flash:focus-visible{background:rgba(255,240,170,.1);
+    box-shadow:inset 0 0 0 1px rgba(255,240,170,.4),0 0 8px rgba(255,240,170,.12)}
+  .flash[aria-pressed="true"]{background:rgba(255,240,170,.18);
+    box-shadow:inset 0 0 0 1px rgba(255,240,170,.45),0 0 12px rgba(255,240,170,.35)}
   .btns{position:absolute;left:44.84%;top:64%;width:17.05%;height:5.63%;gap:0}
   .btn{width:100%;height:100%;display:grid;place-items:center}
   .btn label{position:absolute;width:1px;height:1px;padding:0;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
