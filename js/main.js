@@ -161,7 +161,10 @@ $("hud").addEventListener("click",e=>{const b=e.target.closest("button[data-l]")
 $("list").addEventListener("click",e=>{const b=e.target.closest("button[data-i]");if(b)setSel(+b.dataset.i,1,"select")});
 $("detail").addEventListener("click",e=>{if(e.target.closest("a"))playSound("select")});
 $("knob").onclick=()=>setSub(sub+1);
-$("wheel").onclick=()=>setSel(sel+1);
+$("wheel").onclick=e=>{
+  const rect=e.currentTarget.getBoundingClientRect(),d=e.detail>0&&e.clientY<Math.floor(rect.top+rect.height/2)?-1:1;
+  setSel(sel+d,d);
+};
 $("wheel").addEventListener("wheel",e=>{e.preventDefault();const d=Math.sign(e.deltaY);if(d)setSel(sel+d,d)},{passive:false});
 $("flash").onclick=e=>{finishBoot();const on=e.currentTarget.getAttribute("aria-pressed")!=="true";e.currentTarget.setAttribute("aria-pressed",on);$("unit").classList.toggle("lit",on);playSound(on?"light_on":"light_off")};
 addEventListener("keydown",e=>{if(e.target.closest("a"))return;const k=e.key;
