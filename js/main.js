@@ -107,11 +107,11 @@ function startBoot(){
   clearTimeout(bootTimer);$("boot-sound").hidden=true;
   boot.classList.add("booting");
   for(const animation of boot.getAnimations({subtree:true})){animation.currentTime=0;animation.play()}
-  bootTimer=setTimeout(()=>finishBoot(false),2000);
+  bootTimer=setTimeout(()=>finishBoot(false),3000);
   playSound("boot",()=>{
     if(!$("boot"))return;
     clearTimeout(bootTimer);
-    bootTimer=setTimeout(()=>finishBoot(false),2000);
+    bootTimer=setTimeout(()=>finishBoot(false),3000);
   });
 }
 function finishBoot(stopSound=true){
