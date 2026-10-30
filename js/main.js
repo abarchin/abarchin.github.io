@@ -81,7 +81,11 @@ function playSound(name,onStart){if(!soundEnabled)return;
   activeSound=sounds[name];activeSound.currentTime=0;
   activeSound.play().then(onStart,error=>{
     if(error.name==="NotAllowedError"&&name==="access_up"){
-      if($("boot-sound")&&soundEnabled)$("boot-sound").hidden=false;
+      if($("boot")&&soundEnabled){
+        clearTimeout(bootTimer);
+        $("boot").classList.remove("booting");
+        $("boot-sound").hidden=false;
+      }
     }else if(error.name!=="AbortError")console.warn(`Could not play ${name} sound:`,error);
   });
 }
@@ -90,7 +94,10 @@ $("sound-toggle").onclick=()=>{
   if(!soundEnabled&&activeSound){activeSound.pause();activeSound.currentTime=0}
   try{localStorage.setItem("pipboy-sound",soundEnabled?"on":"off")}
   catch(error){console.warn("Could not save sound preference:",error)}
-  updateSoundButton();if(soundEnabled){if($("boot"))startBoot();else playSound("select")}
+  updateSoundButton();
+  if($("boot")){
+    if(soundEnabled||!$("boot").classList.contains("booting"))startBoot();
+  }else if(soundEnabled)playSound("select");
 };
 
 let bootTimer,bootAudioStarted=false;
@@ -136,6 +143,14 @@ function items(){const d=D[L];
   if(sub===2)return d.stations.map(s=>s[0]);
   return [];
 }
+function revealInPanel(el){
+  if(!el)return;
+  const panel=el.parentElement,box=el.getBoundingClientRect(),frame=panel.getBoundingClientRect(),scale=frame.width/panel.offsetWidth;
+  panel.scrollBy({
+    left:(box.left<frame.left?box.left-frame.left:Math.max(0,box.right-frame.right))/scale,
+    top:(box.top<frame.top?box.top-frame.top:Math.max(0,box.bottom-frame.bottom))/scale
+  });
+}
 function render(){const d=D[L],tabs=subsOf(mode);cancelAnimationFrame(raf);updateSoundButton();updateTheme();
   // Both three- and four-tab modes align with the fixed 25-degree scale marks.
   $("knob").style.transform=`rotate(${45+sub*150/Math.max(1,tabs.length-1)}deg)`;
@@ -143,10 +158,10 @@ function render(){const d=D[L],tabs=subsOf(mode);cancelAnimationFrame(raf);updat
   $("hud").innerHTML=`<span class="mode">${d.modes[mode]}</span><span class="hl"><span>${d.lvl} ${yrs}</span><span>XP <span class="xp"><i style="width:${Math.round(y%1*100)}%"></i></span></span><span class="yrs">${yrs} ${d.yrs}</span><span class="loc">ALCALÁ</span><span class="clock" id="clock">${now.toTimeString().slice(0,5)}</span><span class="lang" role="group" aria-label="Language"><button id="lang-en" aria-pressed="${L==="en"}" data-l="en">EN</button><button id="lang-es" aria-pressed="${L==="es"}" data-l="es">ES</button></span></span>`;
   $("btns").innerHTML=d.modes.map((m,i)=>`<div class="btn"><label for="btn-${i}">${m}</label><button id="btn-${i}" data-m="${i}" aria-pressed="${i===mode}" aria-label="${m}"></button></div>`).join("");
   $("subs").innerHTML=tabs.map((s,i)=>`<button role="tab" id="sub-${i}" data-s="${i}" aria-selected="${i===sub}">${esc(s)}</button>`).join("");
-  $("sub-"+sub).scrollIntoView({block:"nearest",inline:"nearest"});
+  revealInPanel($("sub-"+sub));
   const its=items();$("main").classList.toggle("wide",!its.length);
   $("list").innerHTML=its.map((t,i)=>`<button id="item-${i}" data-i="${i}" aria-current="${i===sel}">${esc(t)}<small>${mode===2&&sub===0&&!d.jobs[i].to?"◆":""}</small></button>`).join("");
-  $("item-"+sel)?.scrollIntoView({block:"nearest",inline:"nearest"});
+  revealInPanel($("item-"+sel));
   detail();
 }
 function detail(){const d=D[L],el=$("detail");

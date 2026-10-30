@@ -47,11 +47,11 @@ body::after{content:"";position:absolute;left:0;right:0;top:50%;height:min(56vh,
 .gauge .needle{transform-origin:0px 0px;animation:rad 7s ease-in-out infinite}
 @keyframes rad{
   0%,64%,100%{transform:rotate(0deg)}
-  20%{transform:rotate(2deg)}
-  27%{transform:rotate(-1deg)}
-  50%,90%{transform:rotate(1deg)}
-  58%{transform:rotate(-2deg)}
-  82%{transform:rotate(3deg)}
+  20%{transform:rotate(3deg)}
+  27%{transform:rotate(-1.5deg)}
+  50%,90%{transform:rotate(1.5deg)}
+  58%{transform:rotate(-3deg)}
+  82%{transform:rotate(4.5deg)}
 }
 .nameplate{font:400 34px/1 var(--script);color:#cfd2c6;background:linear-gradient(#f4f5ee,#9da196 55%,#e6e8df);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;
   filter:drop-shadow(0 2px 0 rgba(0,0,0,.7));transform:rotate(-4deg);margin-top:2px}
@@ -93,13 +93,15 @@ body::after{content:"";position:absolute;left:0;right:0;top:50%;height:min(56vh,
   background:radial-gradient(ellipse at 50% 45%,var(--screen-glow),var(--screen) 72%);box-shadow:inset 0 0 70px #000}
 .boot-log{min-height:0;overflow:auto;font-size:14px;line-height:1.6;opacity:0}
 .booting .boot-log{animation:boot-power .32s ease-out both}
+.boot:not(.booting) .boot-log{opacity:1}
+.boot:not(.booting) .boot-line{display:none}
 .boot-log p{margin:0}
 .boot-log .boot-brand{font:32px/1 var(--display);letter-spacing:.06em;margin-bottom:6px}
 .boot-log .boot-version{font-size:11px;margin-bottom:18px}
 .boot-line{opacity:0}
 .booting .boot-line{animation:boot-line .1s linear var(--delay) forwards}
 .boot-log .boot-ready{margin-top:16px;font-family:var(--display);font-size:22px}
-.boot-actions{display:flex;justify-content:flex-end;gap:8px;flex:none}
+.boot-actions{display:flex;flex-wrap:wrap;justify-content:flex-end;gap:8px;flex:none}
 .boot-actions button{flex:none;min-height:44px;font:12px var(--body);color:var(--phos-dim);background:none;
   border:1px solid var(--phos-dim);padding:8px 12px;cursor:pointer}
 .boot-actions button:hover{color:var(--phos);border-color:var(--phos)}
@@ -217,12 +219,12 @@ nav.subs::before{content:"";position:absolute;left:26px;right:26px;top:0;height:
   .model{grid-area:module;justify-self:start;align-self:start;margin:10px 0 0 calc(6% + 18px);min-height:28px;z-index:3;
     font-size:9px;letter-spacing:.05em;padding:3px 4px;color:#b2bea9;border-color:#71816b;background:#18271d;box-shadow:inset 0 1px 0 rgba(172,189,158,.12)}
   .model:hover,.model:focus-visible{color:#d3cdae;border-color:#b2bea9}
-  .bezel{--bezel-padding:clamp(14px,4vw,22px);width:100%;min-width:0;aspect-ratio:1;min-height:304px;
-    padding:var(--bezel-padding);border:2px solid #0b130e;border-radius:calc(24px + var(--bezel-padding) + 2px);
-    background:var(--grime),linear-gradient(145deg,#2b3a30,#131e17 45%,#233228);
-    box-shadow:inset 0 2px 0 rgba(143,165,145,.18),inset 0 -4px 0 #080f0b,0 0 0 3px #111c15,0 18px 35px rgba(0,0,0,.65)}
-  .screen{border-radius:24px;
-    box-shadow:inset 0 0 90px #000,inset 0 0 20px #000,0 0 0 5px #060d08,0 0 0 8px rgba(69,87,72,.35)}
+  .bezel{--bezel-padding:clamp(14px,4vw,22px);width:100%;min-width:0;
+    padding:var(--bezel-padding);border:2px solid #405344;border-radius:calc(24px + var(--bezel-padding) + 2px);
+    background:linear-gradient(145deg,#2b3a30,#131e17 45%,#233228);
+    box-shadow:0 18px 35px rgba(0,0,0,.65)}
+  .screen{aspect-ratio:4/5;border:2px solid #060d08;border-radius:24px;
+    box-shadow:inset 0 0 90px #000,inset 0 0 20px #000}
   .boot{padding:16px;gap:12px}
   .boot-log{font-size:12px;line-height:1.4}
   .boot-log .boot-brand{font-size:28px}

@@ -241,8 +241,8 @@
   <g filter="url(#grain)">
     <path d="M76 197h139v29H76z" fill="#333e2c" stroke="#182517" stroke-width="2"/>
     <path d="M80 199h125" stroke="#94987b" stroke-opacity=".3"/>
-    <text x="147" y="215" fill="#1c251c" font-family="Georgia,serif" font-size="18" font-style="italic" font-weight="bold" text-anchor="middle">Pip-Boy</text>
-    <text x="146" y="214" fill="#a6b29d" font-family="Georgia,serif" font-size="18" font-style="italic" font-weight="bold" text-anchor="middle">Pip-Boy</text>
+    <text x="146.75" y="219" fill="#1c251c" font-family="Georgia,serif" font-size="18" font-style="italic" font-weight="bold" text-anchor="middle">Pip-Boy</text>
+    <text x="145.75" y="218" fill="#a6b29d" font-family="Georgia,serif" font-size="18" font-style="italic" font-weight="bold" text-anchor="middle">Pip-Boy</text>
     <use href="#vent" x="77" y="228"/><use href="#vent" x="77" y="251"/>
     <use href="#vent" x="77" y="274"/><use href="#vent" x="77" y="297"/>
     <rect id="model-plate" x="97" y="317" width="107" height="18" rx="2" fill="#202c20" stroke="#5b6851"/>
