@@ -39,14 +39,16 @@ body::after{content:"";position:absolute;left:0;right:0;top:50%;height:min(56vh,
 
 /* left control panel */
 .panel{grid-area:left;display:flex;flex-direction:column;align-items:center;gap:12px;padding:6px 4px 0;position:relative;min-height:0}
-.gauge{width:92px;height:92px;border-radius:50%;position:relative;flex:none;
-  background:radial-gradient(circle,#e3dfcd 0 55%,#c9c4ae 62%,transparent 63%),radial-gradient(circle,#2a2a22 64%,#8e9080 66%,#3a3b31 72%);box-shadow:0 3px 0 #111,inset 0 0 0 2px #1a1a14}
-.gauge::before{content:"";position:absolute;inset:12px;border-radius:50%;
-  background:conic-gradient(from 10deg,#c4271b 0 70deg,transparent 70deg),repeating-conic-gradient(from -80deg,#2a2a22 0 2deg,transparent 2deg 16deg);
-  -webkit-mask:radial-gradient(circle,transparent 24px,#000 25px,#000 33px,transparent 34px);mask:radial-gradient(circle,transparent 24px,#000 25px,#000 33px,transparent 34px)}
-.gauge .needle{position:absolute;left:50%;bottom:50%;width:2px;height:32px;margin-left:-1px;background:#1a1a14;transform-origin:50% 100%;transform:rotate(-30deg);animation:rad 3.5s ease-in-out infinite alternate}
-.gauge::after{content:"RADS";position:absolute;left:0;right:0;top:60%;text-align:center;font:9px var(--body);letter-spacing:.15em;color:#3a3a30}
-@keyframes rad{0%{transform:rotate(-38deg)}40%{transform:rotate(-26deg)}70%{transform:rotate(-33deg)}100%{transform:rotate(-20deg)}}
+.gauge{display:none}
+.gauge .needle{transform-origin:0px 0px;animation:rad 7s ease-in-out infinite}
+@keyframes rad{
+  0%,64%,100%{transform:rotate(0deg)}
+  20%{transform:rotate(2deg)}
+  27%{transform:rotate(-1deg)}
+  50%,90%{transform:rotate(1deg)}
+  58%{transform:rotate(-2deg)}
+  82%{transform:rotate(3deg)}
+}
 .nameplate{font:400 34px/1 var(--script);color:#cfd2c6;background:linear-gradient(#f4f5ee,#9da196 55%,#e6e8df);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;
   filter:drop-shadow(0 2px 0 rgba(0,0,0,.7));transform:rotate(-4deg);margin-top:2px}
 .vents{display:flex;flex-direction:column;gap:7px;width:100%;padding-inline:8px;box-sizing:border-box}
@@ -168,8 +170,9 @@ nav.subs::before{content:"";position:absolute;left:26px;right:26px;top:0;height:
   body::after{display:none}
   .unit{display:block;width:min(1600px,100%,calc((100dvh - 28px) * 950 / 675));height:auto;aspect-ratio:950/675;
     padding:0;border-radius:0;background:url("../assets/pipboy-3000.svg") center/100% 100% no-repeat;box-shadow:none}
-  .screw,.gauge,.nameplate,.vents,.model,.scale,.side-label,.hood,.slots,.clamp{display:none}
+  .screw,.nameplate,.vents,.model,.scale,.side-label,.hood,.slots,.clamp{display:none}
   .panel,.selector,.wheel-slot,.module{display:contents}
+  .gauge{display:block;position:absolute;left:12.315789%;top:12%;width:9.894737%;height:auto;aspect-ratio:94/96;overflow:visible;pointer-events:none}
   .bezel{position:absolute;left:32.63%;top:17.78%;width:41.68%;height:41.48%;
     padding:0;border-radius:0;background:none;box-shadow:none}
   .screen{zoom:var(--screen-scale,1)}
