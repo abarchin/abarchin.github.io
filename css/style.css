@@ -229,5 +229,5 @@ nav.subs::before{content:"";position:absolute;left:26px;right:26px;top:0;height:
 .sound-toggle:hover{color:var(--phos);border-color:var(--phos-dim)}
 .sound-toggle .sound-off,.sound-toggle[aria-pressed="false"] .sound-waves{display:none}
 .sound-toggle[aria-pressed="false"] .sound-off{display:block}
-@media (max-width:760px){.sound-toggle{position:static;flex:none}}
+@media (max-width:760px){.sound-toggle{position:static;flex:none;align-self:flex-end}}
 @media (prefers-reduced-motion:reduce){.boot{display:none}.screen::after{animation:none;display:none}.gauge .needle{animation:none}.selector .knob,.btn button,.wheel{transition:none}}
