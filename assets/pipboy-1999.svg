@@ -255,7 +255,7 @@
   <!-- Equal radial marks: 8 units long, every 25 degrees from 45 to 220; the plate's two ends mirror each other across the range. -->
   <g id="selector-scale" transform="translate(132 393)" filter="url(#shadow)">
     <g filter="url(#grain)">
-      <path d="M24-32 37-43Q41-48 45-43A62 62 0 0 1 -38.9 48.6Q-44.2 45.0 -39.6 40.6L-29.8 26.7A40 40 0 1 0 24-32Z"
+      <path d="M24-32 37-43Q41-48 45-43A62.24 62.24 0 0 1 -38.9 48.6Q-44.2 45.0 -39.6 40.6L-29.8 26.7A40 40 0 1 0 24-32Z"
         fill="url(#steel)" stroke="#182d20" stroke-width="2"/>
       <path d="M37.48 -37.48A53 53 0 0 1 -34.07 40.60" stroke="#bec7b3" stroke-opacity=".35" stroke-width="1"/>
       <g stroke="#c2c6aa" stroke-opacity=".7" stroke-width="1.4">
