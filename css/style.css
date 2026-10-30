@@ -224,7 +224,7 @@ nav.subs::before{content:"";position:absolute;left:26px;right:26px;top:0;height:
   .model:hover,.model:focus-visible{color:#d3cdae;border-color:#b2bea9}
   .bezel{--bezel-padding:clamp(22px,7vw,36px);width:100%;min-width:0;flex-direction:column;
     padding:var(--bezel-padding) var(--bezel-padding) 0;border:2px solid #405344;border-radius:6px;
-    background:linear-gradient(145deg,#2b3a30,#131e17 45%,#233228);
+    background:var(--grime),linear-gradient(145deg,#2b3a30,#131e17 45%,#233228);
     box-shadow:0 18px 35px rgba(0,0,0,.65)}
   /* same lettering as the desktop SVG nameplate; fills the bottom strip so it centres both ways */
   .bezel-logo{display:flex;align-items:center;justify-content:center;height:calc(var(--bezel-padding) + 44px);
