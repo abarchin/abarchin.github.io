@@ -89,14 +89,9 @@ body::after{content:"";position:absolute;left:0;right:0;top:50%;height:min(56vh,
   background:radial-gradient(ellipse 55% 30% at 35% 10%,rgba(255,255,255,.08),transparent 70%),repeating-linear-gradient(to bottom,transparent 0 2px,rgba(0,0,0,.32) 2px 3px)}
 .screen::after{content:"";position:absolute;left:0;right:0;height:120px;top:-120px;pointer-events:none;z-index:6;background:linear-gradient(to bottom,transparent,rgba(var(--phos-rgb),.05),transparent);animation:roll 7s linear infinite}
 @keyframes roll{to{top:110%}}
-/* covers the page until fonts and artwork are ready, so it appears in one piece */
-.loader{position:fixed;inset:0;z-index:50;display:grid;place-items:center;margin:0;
-  background:repeating-linear-gradient(to bottom,transparent 0 2px,rgba(0,0,0,.32) 2px 3px),#090907;
-  font:32px/1 var(--display);letter-spacing:.06em;color:var(--phos);text-shadow:0 0 6px rgba(var(--phos-rgb),.55);transition:opacity .25s}
-.loader p{margin:0}
+/* plain page backdrop over everything until fonts and artwork are ready, so it appears in one piece */
+.loader{position:fixed;inset:0;z-index:50;background:inherit;transition:opacity .25s}
 .loader.done{opacity:0;pointer-events:none}
-.loader .cursor{display:inline-block;width:.5em;height:.8em;margin-left:.15em;background:currentColor;animation:blink 1s steps(1) infinite}
-@keyframes blink{50%{opacity:0}}
 .lit .screen{filter:brightness(1.3)}
 .bezel-logo{display:none}
 
@@ -289,4 +284,4 @@ nav.subs::before{content:"";position:absolute;left:26px;right:26px;top:0;height:
 .sound-toggle .sound-off,.sound-toggle[aria-pressed="false"] .sound-waves{display:none}
 .sound-toggle[aria-pressed="false"] .sound-off{display:block}
 @media (max-width:760px){.sound-toggle{position:static;flex:none;align-self:flex-end}}
-@media (prefers-reduced-motion:reduce){.boot{display:none}.loader{transition:none}.loader .cursor{animation:none}.screen::after{animation:none;display:none}.gauge .needle{animation:none}.selector .knob,.btn button,.wheel,.wheel::before{transition:none}}
+@media (prefers-reduced-motion:reduce){.boot{display:none}.loader{transition:none}.screen::after{animation:none;display:none}.gauge .needle{animation:none}.selector .knob,.btn button,.wheel,.wheel::before{transition:none}}
