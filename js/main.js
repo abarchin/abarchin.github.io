@@ -4,7 +4,7 @@ const D={
  en:{modes:["STATS","ITEMS","DATA"],subs:[["Status","Perks","Education"],null,["Quests","Local Map","Radio"]],
   role:"Software Engineer",summary:"Software Engineer with a focus on backend architecture and DevOps. Currently expanding my work with RAG systems and AI applications, with a proven track record of automating AWS production workflows and CI/CD pipelines.",
   perks:[["Downtime Down","-40%","System downtime cut with containerized Docker deployments.","Vodafone"],["Fast Draw","+30%","Faster API execution on secure Python and Java REST services.","Vodafone"],["Efficiency Expert","+15%","Operational efficiency gained with a full-stack employee management system.","Afronta"]],
-  edu:{school:"Universidad de Alcalá",deg:"Computer Science",years:"2017 – 2022"},
+  edu:{school:"Universidad de Alcalá",deg:"Computer Science",years:"2017 – 2022",cert:{org:"Cambridge English",name:"B2 First Certificate",year:"2015"}},
   inv:{"AI":["Generative AI (RAG)","ChromaDB"],"Languages":["Python (FastAPI)","Kotlin","Java"],"Data":["Kafka","Redis"],"Infra":["AWS","Docker","Kubernetes","Jenkins (CI/CD)","Datadog"]},
   used:"Field use",listed:"Listed on CV",
   notes:{"Generative AI (RAG)":["Thoughtworks · internal knowledge base fed from Jira, GitHub and ServiceNow"],"ChromaDB":["Thoughtworks · vector store for the RAG system"],
@@ -14,13 +14,13 @@ const D={
     "Jenkins (CI/CD)":["Vodafone · CI/CD pipelines"],"Datadog":["Thoughtworks · observability for the automotive app"]},
   active:"ACTIVE",done:"COMPLETE",now:"Present",
   map:{sub:"Madrid region · base of operations",note:"Open to hybrid and remote roles."},
-  stations:[["Email","email"],["LinkedIn","linkedin"],["GitHub","github"],["CV (PDF)","cv"]],tune:"Tune a station to open the channel.",cv:"Download CV (PDF)",pdf:"cv/alvaro-barchin-rubio-resume.pdf",
+  stations:[["Email","email"],["LinkedIn","linkedin"],["GitHub","github"],["Resume (PDF)","cv"]],tune:"Tune a station to open the channel.",cv:"Download resume (PDF)",pdf:"cv/alvaro-barchin-rubio-resume.pdf",
   lvl:"LVL",yrs:"YRS",sound:"Sound effects",mute:"Mute sound effects",unmute:"Unmute sound effects",
   theme:"New Vegas amber theme",green:"Switch to Fallout 3 green",amber:"Switch to New Vegas amber"},
  es:{modes:["STATS","ITEMS","DATA"],subs:[["Estado","Logros","Formación"],null,["Misiones","Mapa local","Radio"]],
   role:"Ingeniero de Software",summary:"Ingeniero de Software centrado en arquitectura backend y DevOps. Actualmente expandiendo mi trabajo con sistemas RAG y aplicaciones de IA, con una trayectoria demostrada en la automatización de flujos de producción en AWS y pipelines de CI/CD.",
   perks:[["Cero Caídas","-40%","Downtime reducido con despliegues en contenedores Docker.","Vodafone"],["Desenfundado Rápido","+30%","Mayor velocidad de ejecución en APIs REST seguras en Python y Java.","Vodafone"],["Experto en Eficiencia","+15%","Eficiencia operativa con un sistema full-stack de gestión de empleados.","Afronta"]],
-  edu:{school:"Universidad de Alcalá",deg:"Ingeniería Informática",years:"2017 – 2022"},
+  edu:{school:"Universidad de Alcalá",deg:"Ingeniería Informática",years:"2017 – 2022",cert:{org:"Cambridge English",name:"Certificado B2 First",year:"2015"}},
   inv:{"IA":["IA Generativa (RAG)","ChromaDB"],"Lenguajes":["Python (FastAPI)","Kotlin","Java"],"Datos":["Kafka","Redis"],"Infra":["AWS","Docker","Kubernetes","Jenkins (CI/CD)","Datadog"]},
   used:"Uso en campo",listed:"Incluido en el CV",
   notes:{"IA Generativa (RAG)":["Thoughtworks · base de conocimiento interna con datos de Jira y GitHub"],"ChromaDB":["Thoughtworks · base vectorial del sistema RAG"],
@@ -169,7 +169,8 @@ function detail(){const d=D[L],el=$("detail");
   if(mode===0){
     if(sub===0)el.innerHTML=`<h2>Álvaro Barchín Rubio</h2><p class="meta">${d.role} · Alcalá de Henares</p><div class="rule"></div><p>${esc(d.summary)}</p>`;
     if(sub===1){const p=d.perks[sel];el.innerHTML=`<div class="big">${p[1]}</div><h2>${esc(p[0])}</h2><p class="meta">${p[3]}</p><div class="rule"></div><p>${esc(p[2])}</p>`}
-    if(sub===2)el.innerHTML=`<h2>${d.edu.school}</h2><p class="meta">${d.edu.deg} · ${d.edu.years}</p><div class="rule"></div><ul class="obj"><li class="done">${d.edu.deg}</li></ul>`;
+    if(sub===2)el.innerHTML=`<h2>${d.edu.school}</h2><p class="meta">${d.edu.deg} · ${d.edu.years}</p><div class="rule"></div><ul class="obj"><li class="done">${d.edu.deg}</li></ul>`+
+      `<h2 style="margin-top:18px">${d.edu.cert.org}</h2><p class="meta">${d.edu.cert.name} · ${d.edu.cert.year}</p>`;
   }
   if(mode===1){const name=items()[sel],notes=d.notes[name];
     el.innerHTML=`<h2>${esc(name)}</h2><p class="meta">${subsOf(1)[sub]}</p><div class="rule"></div><h3>${notes?d.used:d.listed}</h3>${notes?`<ul class="obj">${notes.map(x=>`<li class="done">${esc(x)}</li>`).join("")}</ul>`:`<p class="meta">—</p>`}`}
@@ -178,9 +179,13 @@ function detail(){const d=D[L],el=$("detail");
     if(sub===1){el.innerHTML=`<h2>Alcalá de Henares</h2><p class="meta">${d.map.sub} · 40.48°N 3.36°W</p><canvas class="full" id="map" width="640" height="360"></canvas><p class="meta" style="margin-top:8px">${d.map.note}</p>`;drawMap()}
     if(sub===2){const [label,k]=d.stations[sel];
       const link=k==="email"?`<a href="mailto:${LINKS.email}">${LINKS.email}</a>`:k==="cv"?`<a href="${d.pdf}" download>${d.cv}</a>`:`<a href="${LINKS[k]}" target="_blank" rel="noopener">${LINKS[k].replace("https://","")}</a>`;
-      el.innerHTML=`<h2>${label}</h2><p class="meta">${d.tune}</p><canvas class="full" id="osc" width="640" height="360"></canvas><p style="margin-top:10px;font-size:20px">${link}</p>`;drawOsc(sel)}
+      el.innerHTML=`<h2>${label}</h2><p class="meta">${d.tune}</p><canvas class="full" id="osc" width="640" height="360"></canvas><p class="station-link">${link}</p>`;drawOsc(sel)}
   }
+  moreHint();
 }
+// flags the detail pane while content remains below, for the mobile fade hint
+function moreHint(){const el=$("detail");el.classList.toggle("more",el.scrollHeight-el.scrollTop-el.clientHeight>4)}
+$("detail").addEventListener("scroll",moreHint,{passive:true});addEventListener("resize",moreHint);document.fonts.ready.then(moreHint);
 function drawMap(){const c=$("map"),x=c.getContext("2d"),G=css("--phos"),Dm=css("--phos-dim"),B=css("--screen");
   x.fillStyle=B;x.fillRect(0,0,640,360);x.strokeStyle=`rgba(${css("--phos-rgb")},.12)`;x.lineWidth=1;
   for(let i=0;i<=640;i+=40){x.beginPath();x.moveTo(i,0);x.lineTo(i,360);x.stroke()}for(let i=0;i<=360;i+=40){x.beginPath();x.moveTo(0,i);x.lineTo(640,i);x.stroke()}
