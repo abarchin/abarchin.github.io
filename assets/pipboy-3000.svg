@@ -140,9 +140,9 @@
   <g stroke-linejoin="round" filter="url(#grain)">
     <path d="M62 123 90 105h91l47 35 476 2 55-37 63 30 39 41v353l-47 54-88-4-62 38H91L42 575V157z"
       fill="url(#rubber)" stroke="#0c140d" stroke-width="6"/>
-    <path d="M81 165h109v459H77L57 598V188z" fill="url(#paint)" stroke="#222b20" stroke-width="5"/>
+    <path id="cuff-backing" d="M81 165H300V625H77L57 598V188z" fill="url(#paint)" stroke="#222b20" stroke-width="5"/>
     <path d="M76 485h149v68H75zm0 77h177v30H75zm0 40h188v23H76z" fill="#222b21" stroke="#71745c" stroke-opacity=".45"/>
-    <path d="M247 471 321 448l353 14 92 47-50 57-61 21-36 38H229l-27-43z"
+    <path id="lower-housing" d="M261 459 321 448l353 14 92 47-50 57-61 21-36 38H229l-27-43 45-111z"
       fill="url(#paint)" stroke="url(#edge)" stroke-width="5"/>
     <rect x="289" y="466" width="57" height="193" fill="url(#rim)" stroke="#747761" stroke-opacity=".5" stroke-width="2"/>
     <rect x="299" y="478" width="37" height="169" fill="url(#scuffs)"/>
@@ -245,8 +245,8 @@
     <text x="146" y="214" fill="#a6b29d" font-family="Georgia,serif" font-size="18" font-style="italic" font-weight="bold" text-anchor="middle">Pip-Boy</text>
     <use href="#vent" x="77" y="228"/><use href="#vent" x="77" y="251"/>
     <use href="#vent" x="77" y="274"/><use href="#vent" x="77" y="297"/>
-    <rect x="97" y="309" width="107" height="21" rx="2" fill="#202c20" stroke="#5b6851"/>
-    <text x="150" y="323" fill="#bbc3a8" font-family="monospace" font-size="9" text-anchor="middle">· Model 3000 ·</text>
+    <rect id="model-plate" x="97" y="319" width="107" height="18" rx="2" fill="#202c20" stroke="#5b6851"/>
+    <text x="150" y="331" fill="#bbc3a8" font-family="monospace" font-size="9" text-anchor="middle">· Model 3000 ·</text>
 
     <rect x="227" y="178" width="44" height="180" rx="7" fill="url(#rim)" stroke="#273323" stroke-width="3"/>
     <rect x="233" y="196" width="33" height="139" rx="5" fill="url(#steel)" stroke="#101c13" stroke-width="3"/>
@@ -298,7 +298,8 @@
     <path d="m398 410 219 1 8 211-223 3z" fill="url(#paint)" stroke="url(#edge)" stroke-width="4"/>
     <path d="M403 488h213v126H408z" fill="#35412f" stroke="#262f22" stroke-width="3"/>
     <path d="m407 497 206-1M412 617h202" stroke="#8b9176" stroke-opacity=".3" stroke-width="2"/>
-    <use href="#slot" x="435" y="507"/><use href="#slot" x="487" y="507"/><use href="#slot" x="540" y="507"/>
+    <use href="#slot" x="435" y="507"/><use href="#slot" x="487" y="507"/>
+    <use href="#slot" x="539" y="507"/><use href="#slot" x="591" y="507"/>
     <path d="m380 400 12 1 9 231-13 1z" fill="url(#rim)" stroke="#2d3f30" stroke-width="2"/>
     <path d="m622 400 11 1 7 230-13 2z" fill="url(#rim)" stroke="#2d3f30" stroke-width="2"/>
     <path d="m383 408 8 215m234-215 8 216" stroke="#b3baa4" stroke-opacity=".3" stroke-width="1.5"/>
@@ -310,7 +311,7 @@
 
   <!-- Dirt collects in recesses; abrasion exposes metal on the raised edges. -->
   <g stroke="#11170f" stroke-opacity=".65" stroke-linecap="round" filter="url(#smudge)">
-    <path d="M82 333h127M220 227v107M78 483q44 30 104-9M281 158v237q0 45 42 47"
+    <path d="M82 338h127M220 227v107M78 483q44 30 104-9M281 158v237q0 45 42 47"
       stroke-width="8"/>
     <path d="M775 202v124m44 16-3 89M830 187l-4 257M846 201v332M403 497l5 116h201"
       stroke-width="9"/>

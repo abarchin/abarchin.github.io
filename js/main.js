@@ -15,7 +15,8 @@ const D={
   active:"ACTIVE",done:"COMPLETE",now:"Present",
   map:{sub:"Madrid region · base of operations",note:"Open to hybrid and remote roles."},
   stations:[["Email","email"],["LinkedIn","linkedin"],["GitHub","github"],["CV (PDF)","cv"]],tune:"Tune a station to open the channel.",cv:"Download CV (PDF)",pdf:"cv/alvaro-barchin-rubio-resume.pdf",
-  lvl:"LVL",yrs:"YRS",sound:"Sound effects",mute:"Mute sound effects",unmute:"Unmute sound effects"},
+  lvl:"LVL",yrs:"YRS",sound:"Sound effects",mute:"Mute sound effects",unmute:"Unmute sound effects",
+  theme:"New Vegas amber theme",green:"Switch to Fallout 3 green",amber:"Switch to New Vegas amber"},
  es:{modes:["STATS","ITEMS","DATA"],subs:[["Estado","Logros","Formación"],null,["Misiones","Mapa local","Radio"]],
   role:"Ingeniero de Software",summary:"Ingeniero de Software centrado en arquitectura backend y DevOps. Actualmente expandiendo mi trabajo con sistemas RAG y aplicaciones de IA, con una trayectoria demostrada en la automatización de flujos de producción en AWS y pipelines de CI/CD.",
   perks:[["Cero Caídas","-40%","Downtime reducido con despliegues en contenedores Docker.","Vodafone"],["Desenfundado Rápido","+30%","Mayor velocidad de ejecución en APIs REST seguras en Python y Java.","Vodafone"],["Experto en Eficiencia","+15%","Eficiencia operativa con un sistema full-stack de gestión de empleados.","Afronta"]],
@@ -30,7 +31,8 @@ const D={
   active:"ACTIVA",done:"COMPLETADA",now:"Actualidad",
   map:{sub:"Comunidad de Madrid · base de operaciones",note:"Abierto a puestos híbridos y remotos."},
   stations:[["Email","email"],["LinkedIn","linkedin"],["GitHub","github"],["CV (PDF)","cv"]],tune:"Sintoniza una emisora para abrir el canal.",cv:"Descargar CV (PDF)",pdf:"cv/alvaro-barchin-rubio-curriculum.pdf",
-  lvl:"NVL",yrs:"AÑOS",sound:"Efectos de sonido",mute:"Silenciar efectos de sonido",unmute:"Activar efectos de sonido"}
+  lvl:"NVL",yrs:"AÑOS",sound:"Efectos de sonido",mute:"Silenciar efectos de sonido",unmute:"Activar efectos de sonido",
+  theme:"Tema ámbar de New Vegas",green:"Usar verde de Fallout 3",amber:"Usar ámbar de New Vegas"}
 };
 D.en.jobs=[
  {co:"Thoughtworks",role:"Software Engineer",from:"Jan 2025",to:null,b:["Architected and led the end-to-end development of an AI RAG system using ChromaDB and FastAPI, integrating Jira, GitHub and ServiceNow into an internal knowledge base.","Deployed a full-stack AI solution with a Vercel web UI and AWS infrastructure, with automated security and code quality scans.","Engineered the production path for a major automotive sales application in Kotlin, using Datadog, Kafka and AWS for observability and debugging."]},
@@ -49,6 +51,20 @@ const esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",
 const reduce=matchMedia("(prefers-reduced-motion: reduce)").matches;
 const css=n=>getComputedStyle(document.documentElement).getPropertyValue(n).trim();
 const subsOf=m=>D[L].subs[m]||Object.keys(D[L].inv);
+
+let amberTheme=false;
+try{amberTheme=localStorage.getItem("pipboy-theme")==="amber"}
+catch(error){console.warn("Could not read theme preference:",error)}
+function updateTheme(){const button=$("theme-toggle"),d=D[L];
+  document.documentElement.dataset.theme=amberTheme?"amber":"green";
+  button.setAttribute("aria-pressed",String(amberTheme));button.setAttribute("aria-label",d.theme);button.title=amberTheme?d.green:d.amber;
+}
+$("theme-toggle").onclick=()=>{
+  finishBoot();amberTheme=!amberTheme;
+  try{localStorage.setItem("pipboy-theme",amberTheme?"amber":"green")}
+  catch(error){console.warn("Could not save theme preference:",error)}
+  render();playSound("select");
+};
 
 const sounds=Object.fromEntries(["mode","tab","scroll","select","tuner","light_on","light_off","access_up","highlight"].map(name=>{
   const audio=new Audio(`assets/audio/ui_pipboy_${name}.wav`);audio.preload="auto";audio.volume=.35;return [name,audio];
@@ -120,7 +136,7 @@ function items(){const d=D[L];
   if(sub===2)return d.stations.map(s=>s[0]);
   return [];
 }
-function render(){const d=D[L],tabs=subsOf(mode);cancelAnimationFrame(raf);updateSoundButton();
+function render(){const d=D[L],tabs=subsOf(mode);cancelAnimationFrame(raf);updateSoundButton();updateTheme();
   // Both three- and four-tab modes align with the fixed 25-degree scale marks.
   $("knob").style.transform=`rotate(${45+sub*150/Math.max(1,tabs.length-1)}deg)`;
   const y=(Date.now()-START)/(365.25*864e5),yrs=Math.floor(y),now=new Date();
@@ -149,8 +165,8 @@ function detail(){const d=D[L],el=$("detail");
       el.innerHTML=`<h2>${label}</h2><p class="meta">${d.tune}</p><canvas class="full" id="osc" width="640" height="360"></canvas><p style="margin-top:10px;font-size:20px">${link}</p>`;drawOsc(sel)}
   }
 }
-function drawMap(){const c=$("map"),x=c.getContext("2d"),G=css("--phos"),Dm=css("--phos-dim");
-  x.fillStyle="#031207";x.fillRect(0,0,640,360);x.strokeStyle="rgba(61,255,122,.12)";x.lineWidth=1;
+function drawMap(){const c=$("map"),x=c.getContext("2d"),G=css("--phos"),Dm=css("--phos-dim"),B=css("--screen");
+  x.fillStyle=B;x.fillRect(0,0,640,360);x.strokeStyle=`rgba(${css("--phos-rgb")},.12)`;x.lineWidth=1;
   for(let i=0;i<=640;i+=40){x.beginPath();x.moveTo(i,0);x.lineTo(i,360);x.stroke()}for(let i=0;i<=360;i+=40){x.beginPath();x.moveTo(0,i);x.lineTo(640,i);x.stroke()}
   // ~1px = 100m. Madrid at (170,230), Alcalá ~30km ENE at (460,160)
   x.setLineDash([6,6]);x.strokeStyle=Dm;x.lineWidth=2;x.beginPath();x.moveTo(380,0);x.bezierCurveTo(420,80,430,130,500,180);x.bezierCurveTo(560,220,600,280,640,310);x.stroke(); // Henares
@@ -159,13 +175,13 @@ function drawMap(){const c=$("map"),x=c.getContext("2d"),G=css("--phos"),Dm=css(
   x.fillStyle=G;x.font="20px 'Share Tech Mono', monospace";x.fillText("MADRID",120,300);x.fillText("A-2",300,185);
   x.fillStyle=Dm;x.fillText("RÍO HENARES",470,232);
   x.fillStyle=G;x.font="26px VT323, monospace";x.fillText("ALCALÁ DE HENARES",400,130);
-  let t=0;const pulse=()=>{x.fillStyle="#031207";x.fillRect(430,140,60,40);
+  let t=0;const pulse=()=>{x.fillStyle=B;x.fillRect(430,140,60,40);
     x.strokeStyle=G;x.lineWidth=2;const r=6+((t%60)/60)*14;x.globalAlpha=1-(t%60)/60;x.beginPath();x.arc(460,160,r,0,7);x.stroke();x.globalAlpha=1;
     x.fillStyle=G;x.beginPath();x.moveTo(460,152);x.lineTo(468,160);x.lineTo(460,168);x.lineTo(452,160);x.closePath();x.fill();
     t++;if(!reduce)raf=requestAnimationFrame(pulse)};pulse();
 }
-function drawOsc(k){const c=$("osc"),x=c.getContext("2d"),G=css("--phos");let t=0;const f=[2,3.5,5,1.4][k],a=[.6,.45,.35,.7][k];
-  const frame=()=>{x.fillStyle="rgba(3,18,7,.45)";x.fillRect(0,0,640,360);x.strokeStyle="rgba(61,255,122,.12)";x.lineWidth=1;
+function drawOsc(k){const c=$("osc"),x=c.getContext("2d"),G=css("--phos"),B=`rgba(${css("--screen-rgb")},.45)`,grid=`rgba(${css("--phos-rgb")},.12)`;let t=0;const f=[2,3.5,5,1.4][k],a=[.6,.45,.35,.7][k];
+  const frame=()=>{x.fillStyle=B;x.fillRect(0,0,640,360);x.strokeStyle=grid;x.lineWidth=1;
     for(let i=0;i<=640;i+=64){x.beginPath();x.moveTo(i,0);x.lineTo(i,360);x.stroke()}for(let i=0;i<=360;i+=45){x.beginPath();x.moveTo(0,i);x.lineTo(640,i);x.stroke()}
     x.strokeStyle=G;x.lineWidth=3;x.shadowColor=G;x.shadowBlur=10;x.beginPath();
     for(let i=0;i<=640;i+=3){const u=i/640,y=180+Math.sin(u*Math.PI*2*f+t)*a*135*Math.sin(u*Math.PI)+Math.sin(u*40+t*3)*6;i?x.lineTo(i,y):x.moveTo(i,y)}
