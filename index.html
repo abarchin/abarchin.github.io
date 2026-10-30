@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <title>Álvaro Barchín Rubio · Software Engineer</title>
+  <meta name="description" content="Software Engineer focused on backend architecture, DevOps and AI/RAG systems. Terminal-style CV.">
+  <meta name="color-scheme" content="dark">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=VT323&display=swap">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div class="bezel">
+  <div class="screen glow">
+    <div class="status">
+      <span><span class="inv">ABR/OS 2.6</span> TTY1</span>
+      <span class="dim" id="sess">guest session</span>
+      <span class="lang" role="group" aria-label="Language">
+        <button id="lang-en" aria-pressed="true" data-l="en">EN</button><button id="lang-es" aria-pressed="false" data-l="es">ES</button>
+      </span>
+      <span id="clock">--:--:--</span>
+    </div>
+    <div id="out" aria-live="polite"></div>
+    <form class="cmdline" id="form" autocomplete="off">
+      <label for="cmd">guest@barchin:~$</label><input id="cmd" spellcheck="false" autocapitalize="off" aria-label="Command"><span class="cursor" aria-hidden="true"></span>
+    </form>
+  </div>
+  <div class="keys" id="keys" aria-label="Quick commands"></div>
+</div>
+<script src="js/main.js"></script>
+</body>
+</html>
