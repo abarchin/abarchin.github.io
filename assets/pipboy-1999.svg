@@ -121,7 +121,7 @@
     </g>
     <path id="gauge-major-tick" d="M0-24V-32"/>
     <path id="gauge-minor-tick" d="M0-28V-32"/>
-    <path id="radiation-needle" d="M4 0H28" stroke="#762c23" stroke-width="2" stroke-opacity=".85"/>
+    <path id="radiation-needle" d="M4 0H28" stroke="#14170f" stroke-width="2" stroke-opacity=".9"/>
     <path id="selector-tick" d="M0-43V-51"/>
     <!-- A same-material inset pointer preserves the grip's circular outline. -->
     <g id="selector-knob" filter="url(#shadow)">
@@ -219,23 +219,36 @@
         <path d="M0-23A23 23 0 0 1 0 23"/>
       </g>
     </g>
-    <g fill="#243a27" font-family="monospace" font-size="6" font-weight="bold" text-anchor="middle">
-      <text x="8" y="-17">100</text><text x="17" y="-3">50</text><text x="6" y="21">0</text>
+    <!-- Cell outlines: the band's edges plus the major ticks split it into boxes. -->
+    <path d="M0-24A24 24 0 0 1 0 24M0-32A32 32 0 0 1 0 32" stroke="#2e3a28" stroke-width=".6"/>
+    <g fill="#1f2a1e" font-family="monospace" font-size="5" font-weight="bold" text-anchor="middle">
+      <text x="0.0" y="-16.7">10</text><text x="10.9" y="-13.2">8</text><text x="17.6" y="-3.9">6</text><text x="17.6" y="7.5">4</text><text x="10.9" y="16.8">2</text><text x="0.0" y="20.3">0</text>
+      <text x="5" y="-6" font-size="4.2">x100</text>
     </g>
-    <circle r="4" fill="#283a29"/>
+    <!-- Radiation trefoil printed on the face: black blades on an off-white disc. -->
+    <circle cx="3.6" cy="12.8" r="3.8" fill="#e6e4d2" stroke="#16190f" stroke-width=".55"/>
+    <g fill="#16190f"><circle cx="3.6" cy="12.8" r=".7"/><path d="M4.17 11.80L5.20 10.03A3.2 3.2 0 0 1 6.80 12.80L4.75 12.80A1.15 1.15 0 0 0 4.17 11.80ZM4.17 13.80L5.20 15.57A3.2 3.2 0 0 1 2.00 15.57L3.02 13.80A1.15 1.15 0 0 0 4.17 13.80ZM2.45 12.80L0.40 12.80A3.2 3.2 0 0 1 2.00 10.03L3.02 11.80A1.15 1.15 0 0 0 2.45 12.80Z"/></g>
+    <circle r="4" fill="#14170f"/>
     <path d="M-5-38C-50-34-51 31-5 38z" fill="url(#steel)" stroke="#82907c" stroke-width="1"/>
     <path d="M-11-32v62" stroke="#253d30" stroke-width="2"/>
     <circle cx="-18" cy="-18" r="3" fill="#a4b19b" stroke="#425846"/>
     <circle cx="-18" cy="18" r="3" fill="#a4b19b" stroke="#425846"/>
-    <!-- Radiation trefoil painted on the steel cover: aged yellow disc, three 60-degree blades. -->
-    <circle cx="-22" cy="0" r="8.6" fill="#b9a24a" stroke="#3a3a22" stroke-width=".8"/>
-    <g fill="#1f2419"><circle cx="-22" cy="0" r="1.6"/><path d="M-20.70 -2.25L-18.40 -6.24A7.2 7.2 0 0 1 -14.80 -0.00L-19.40 -0.00A2.6 2.6 0 0 0 -20.70 -2.25ZM-20.70 2.25L-18.40 6.24A7.2 7.2 0 0 1 -25.60 6.24L-23.30 2.25A2.6 2.6 0 0 0 -20.70 2.25ZM-24.60 0.00L-29.20 0.00A7.2 7.2 0 0 1 -25.60 -6.24L-23.30 -2.25A2.6 2.6 0 0 0 -24.60 0.00Z"/></g>
     </g>
     <ellipse rx="35" ry="37" fill="url(#soot)" opacity=".55"/>
     <path d="M-33-23q5-9 16-12m26-2 9 4m-52 53 5 8m26 10 12-4"
       stroke="#a6b09c" stroke-opacity=".6" stroke-width="1.5"/>
     <path d="m-22-9 9-2m-14 2 12-3m-8 22 9-2m26-11 7-6" stroke="#b3bda8" stroke-opacity=".24" stroke-width=".6"/>
     <ellipse rx="33" ry="35" fill="url(#glass)"/>
+    <!-- Weathered crystal: cloudy haze, grime packed against the bezel, fine scratches. -->
+    <g filter="url(#smudge)">
+      <ellipse cx="10" cy="-18" rx="13" ry="6" fill="#dfe6d3" opacity=".22" transform="rotate(-28 10 -18)"/>
+      <ellipse cx="-4" cy="22" rx="15" ry="7" fill="#2c3121" opacity=".35"/>
+      <ellipse cx="22" cy="12" rx="6" ry="9" fill="#cfd6c0" opacity=".14"/>
+      <ellipse rx="32" ry="34" stroke="#1d2117" stroke-width="5" opacity=".45"/>
+    </g>
+    <path d="m4-30 9 13m-21 34 14-6m16-25 6 9m-27-3 4-12m30 16-8 13m-12-30 3 5"
+      stroke="#d8dfcc" stroke-opacity=".28" stroke-width=".45"/>
+    <path d="m14-24 5 3m-3 30 4 4m-24 14 6-1" stroke="#0f130c" stroke-opacity=".35" stroke-width=".5"/>
   </g>
 
   <g filter="url(#grain)">
