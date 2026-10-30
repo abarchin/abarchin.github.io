@@ -119,9 +119,17 @@
       <path d="M-3 4H2v89H-3z" fill="#090f0b"/>
       <path d="M8 3v92" stroke="#a0a086" stroke-opacity=".4"/>
     </g>
-    <!-- Used by the live selector button; the crescent stays on the casing. -->
+    <!-- The grip, pointed metal crescent, and markings rotate as one assembly. -->
     <g id="selector-knob" filter="url(#shadow)">
       <g filter="url(#grain)">
+        <path d="M-30-28Q-8-50 21-33l19-12q4-3 7 1 17 20 15 46-1 39-34 52-27 10-59-9q-4-3-1-7l13-18z"
+          fill="url(#steel)" stroke="#182d20" stroke-width="2"/>
+        <path d="m30-35 6 8m8 4-9 6m19 4-11 2m12 14-11-2m4 19-10-5m-1 20-7-9m-8 15-4-11m-11 14-1-12m-13 9 4-11"
+          stroke="#c2c6aa" stroke-opacity=".7" stroke-width="1.4"/>
+        <path d="M43-39q24 31 7 60T-25 43" stroke="#bec7b3" stroke-opacity=".35" stroke-width="1"/>
+        <g fill="#a5b19d" stroke="#425346" stroke-width=".8">
+          <circle cx="42" cy="-35" r="2.2"/><circle cx="-20" cy="40" r="2.2"/>
+        </g>
         <path d="m-12-36 23 1 19 12 9 23-7 24-19 14-23-3-19-15-6-24 9-22z"
           fill="url(#dial)" stroke="#687b6b" stroke-width="2"/>
         <circle r="27" fill="url(#dial)" stroke="#18281f" stroke-width="3"/>
@@ -129,7 +137,6 @@
       </g>
       <path d="M-27-12q5-13 19-16m-3 7 9-2m-28 36 4 6m41 10 6-3" stroke="#9ba999" stroke-opacity=".3" stroke-width="1.2"/>
       <path d="m-11-23 6-1m-20 9 3-6m-3 4 1 4m3 35 5 3m38-14 1-7" stroke="#b8c1ae" stroke-opacity=".3" stroke-width=".7"/>
-      <path d="M0-35 8-22 3-23v9h-6v-9l-5 1z" fill="#bfc6b3" stroke="#667564" stroke-width=".8"/>
     </g>
   </defs>
 
@@ -232,17 +239,8 @@
     <path d="M241 187h15m-15 156h15" stroke="#aab299" stroke-width="3" stroke-linecap="round"/>
   </g>
 
-  <!-- Rotary selector and its etched crescent scale. -->
-  <g transform="translate(132 393)" filter="url(#shadow)">
-    <g filter="url(#grain)">
-    <path d="M-30-28Q-8-50 21-33l23-14q19 21 18 49-1 39-34 52-27 10-59-9l15-23z"
-      fill="url(#steel)" stroke="#182d20" stroke-width="2"/>
-    <path d="m30-35 6 8m8 4-9 6m19 4-11 2m12 14-11-2m4 19-10-5m-1 20-7-9m-8 15-4-11m-11 14-1-12m-13 9 4-11"
-      stroke="#c2c6aa" stroke-opacity=".7" stroke-width="1.4"/>
-    <path d="M43-39q24 31 7 60T-25 43" stroke="#bec7b3" stroke-opacity=".35" stroke-width="1"/>
-    <circle r="38" fill="url(#rubber)" stroke="#29382c" stroke-width="2"/>
-    </g>
-  </g>
+  <!-- Only the mounting socket remains fixed to the casing. -->
+  <circle cx="132" cy="393" r="38" fill="url(#rubber)" stroke="#29382c" stroke-width="2"/>
 
   <use href="#screw" x="248" y="135"/>
   <use href="#screw" x="786" y="169"/>
