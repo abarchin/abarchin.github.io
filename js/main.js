@@ -67,7 +67,8 @@ $("theme-toggle").onclick=()=>{
 };
 
 const sounds=Object.fromEntries(["mode","tab","scroll","select","tuner","light_on","light_off","boot"].map(name=>{
-  const audio=new Audio(`assets/audio/ui_pipboy_${name}.wav`);audio.preload="auto";audio.volume=.35;return [name,audio];
+  // only the boot sound is needed up front; the rest load once the page is shown
+  const audio=new Audio(`assets/audio/ui_pipboy_${name}.wav`);audio.preload=name==="boot"?"auto":"none";audio.volume=.35;return [name,audio];
 }));
 let soundEnabled=true,activeSound;
 try{soundEnabled=localStorage.getItem("pipboy-sound")!=="off"}
@@ -236,4 +237,11 @@ addEventListener("keydown",e=>{if(e.target.closest("a"))return;const k=e.key;
   if(k==="ArrowDown"){e.preventDefault();setSel(sel+1)}if(k==="ArrowUp"){e.preventDefault();setSel(sel-1,-1)}});
 setInterval(()=>{const c=$("clock");if(c)c.textContent=new Date().toTimeString().slice(0,5)},10000);
 render();
-if(reduce)finishBoot();else startBoot();
+// hold the loader until fonts (and the desktop artwork) are ready; capped so a slow asset never blocks the page
+const art=matchMedia("(min-width:761px)").matches&&new Promise(r=>{const i=new Image();i.src="assets/pipboy-1999.svg";i.decode().then(r,r)});
+Promise.race([Promise.all([document.fonts.load('16px "VT323"'),document.fonts.load('16px "Share Tech Mono"'),art]),new Promise(r=>setTimeout(r,4000))])
+  .catch(()=>{}).then(()=>{
+    const loader=$("loader");loader.classList.add("done");setTimeout(()=>loader.remove(),300);
+    for(const audio of Object.values(sounds))if(audio.preload==="none"){audio.preload="auto";audio.load()}
+    if(reduce)finishBoot();else startBoot();
+  });
