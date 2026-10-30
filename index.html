@@ -32,9 +32,20 @@
   <div class="hood metal" aria-hidden="true"></div>
   <div class="bezel">
     <div class="screen">
-      <header class="hud" id="hud"></header>
-      <main id="main"><div class="list" id="list"></div><div class="detail" id="detail" aria-live="polite"></div></main>
-      <nav class="subs" role="tablist" id="subs"></nav>
+      <div class="boot" id="boot" role="region" aria-label="System startup">
+        <div class="boot-log" aria-hidden="true">
+          <p class="boot-brand">PIP-BOY 3000</p>
+          <p class="boot-version">PERSONAL INFORMATION PROCESSOR</p>
+          <p class="boot-line" style="--delay:.35s">[OK] MEMORY CHECK</p>
+          <p class="boot-line" style="--delay:.7s">[OK] DISPLAY INITIALIZED</p>
+          <p class="boot-line" style="--delay:1.05s">[OK] PERSONNEL FILE LOADED</p>
+          <p class="boot-line boot-ready" style="--delay:1.45s">SYSTEM READY _</p>
+        </div>
+        <button id="boot-skip" type="button">Skip startup</button>
+      </div>
+      <header class="hud" id="hud" inert></header>
+      <main id="main" inert><div class="list" id="list"></div><div class="detail" id="detail" aria-live="polite"></div></main>
+      <nav class="subs" role="tablist" id="subs" inert></nav>
     </div>
   </div>
   <div class="module metal">

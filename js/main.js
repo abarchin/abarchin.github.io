@@ -72,6 +72,17 @@ $("sound-toggle").onclick=()=>{
   updateSoundButton();if(soundEnabled)playSound("select");
 };
 
+let bootTimer;
+function finishBoot(){
+  clearTimeout(bootTimer);
+  const boot=$("boot");if(!boot)return;
+  const restoreFocus=boot.contains(document.activeElement);
+  boot.remove();
+  for(const id of ["hud","main","subs"])$(id).inert=false;
+  if(restoreFocus)$("sub-"+sub).focus({preventScroll:true});
+}
+$("boot-skip").onclick=()=>{finishBoot();playSound("select")};
+
 // Fit the existing desktop UI into the reference casing without clipping its HUD.
 new ResizeObserver(([entry])=>{
   $("unit").style.setProperty("--screen-scale",Math.min(1,entry.contentRect.width/680));
@@ -141,9 +152,9 @@ function drawOsc(k){const c=$("osc"),x=c.getContext("2d"),G=css("--phos");let t=
     for(let i=0;i<=640;i+=3){const u=i/640,y=180+Math.sin(u*Math.PI*2*f+t)*a*135*Math.sin(u*Math.PI)+Math.sin(u*40+t*3)*6;i?x.lineTo(i,y):x.moveTo(i,y)}
     x.stroke();x.shadowBlur=0;t+=.06;if(!reduce)raf=requestAnimationFrame(frame)};frame();
 }
-function setMode(m){mode=(m+3)%3;sub=0;sel=0;render();playSound("mode")}
-function setSub(s){const n=subsOf(mode).length;sub=(s+n)%n;sel=0;render();playSound("tab")}
-function setSel(i,dir=1,sound="scroll"){const n=items().length;if(!n)return;sel=(i+n)%n;wheelPos+=dir*10;$("wheel").style.backgroundPosition=`0 0,0 ${wheelPos}px`;render();$("item-"+sel)?.focus({preventScroll:true});playSound(mode===2&&sub===2?"tuner":sound)}
+function setMode(m){finishBoot();mode=(m+3)%3;sub=0;sel=0;render();playSound("mode")}
+function setSub(s){finishBoot();const n=subsOf(mode).length;sub=(s+n)%n;sel=0;render();playSound("tab")}
+function setSel(i,dir=1,sound="scroll"){finishBoot();const n=items().length;if(!n)return;sel=(i+n)%n;wheelPos+=dir*10;$("wheel").style.backgroundPosition=`0 0,0 ${wheelPos}px`;render();$("item-"+sel)?.focus({preventScroll:true});playSound(mode===2&&sub===2?"tuner":sound)}
 $("btns").addEventListener("click",e=>{const b=e.target.closest("button[data-m]");if(b)setMode(+b.dataset.m)});
 $("subs").addEventListener("click",e=>{const b=e.target.closest("button[data-s]");if(b)setSub(+b.dataset.s)});
 $("hud").addEventListener("click",e=>{const b=e.target.closest("button[data-l]");if(b){L=b.dataset.l;document.documentElement.lang=L;render();playSound("select")}});
@@ -152,9 +163,11 @@ $("detail").addEventListener("click",e=>{if(e.target.closest("a"))playSound("sel
 $("knob").onclick=()=>setSub(sub+1);
 $("wheel").onclick=()=>setSel(sel+1);
 $("wheel").addEventListener("wheel",e=>{e.preventDefault();const d=Math.sign(e.deltaY);if(d)setSel(sel+d,d)},{passive:false});
-$("flash").onclick=e=>{const on=e.currentTarget.getAttribute("aria-pressed")!=="true";e.currentTarget.setAttribute("aria-pressed",on);$("unit").classList.toggle("lit",on);playSound(on?"light_on":"light_off")};
+$("flash").onclick=e=>{finishBoot();const on=e.currentTarget.getAttribute("aria-pressed")!=="true";e.currentTarget.setAttribute("aria-pressed",on);$("unit").classList.toggle("lit",on);playSound(on?"light_on":"light_off")};
 addEventListener("keydown",e=>{if(e.target.closest("a"))return;const k=e.key;
+  if(k==="Escape"){finishBoot();return}
   if(k==="1"||k==="2"||k==="3")setMode(+k-1);if(k==="ArrowRight")setSub(sub+1);if(k==="ArrowLeft")setSub(sub-1);
   if(k==="ArrowDown"){e.preventDefault();setSel(sel+1)}if(k==="ArrowUp"){e.preventDefault();setSel(sel-1,-1)}});
 setInterval(()=>{const c=$("clock");if(c)c.textContent=new Date().toTimeString().slice(0,5)},10000);
 render();
+if(reduce)finishBoot();else{$("boot").classList.add("booting");bootTimer=setTimeout(finishBoot,2000)}
