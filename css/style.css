@@ -249,9 +249,9 @@ nav.subs::before{content:"";position:absolute;left:26px;right:26px;top:0;height:
   .list button small{display:none}
   .detail{font-size:15px}.detail h2{font-size:24px}.big{font-size:48px}
   .detail.more{-webkit-mask-image:linear-gradient(#000 calc(100% - 48px),transparent);mask-image:linear-gradient(#000 calc(100% - 48px),transparent)}
-  /* link above a short scope so it stays in view without scrolling */
-  .detail:has(#osc){display:flex;flex-direction:column}
-  #osc{order:1;flex:none;aspect-ratio:auto;height:70px;object-fit:cover}
+  /* link above the scope; the scope shrinks into the space left, keeping its 16:9 shape */
+  .detail:has(#osc){display:flex;flex-direction:column;container-type:inline-size}
+  #osc{order:1;flex:1 1 0;min-height:60px;max-height:calc(100cqw*9/16);width:auto;max-width:100%;align-self:flex-start}
   .station-link{margin:0 0 8px;font-size:14px}
   nav.subs{padding:0 12px 10px;font-size:19px}
   nav.subs::before{left:12px;right:12px}
