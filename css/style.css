@@ -214,13 +214,13 @@ nav.subs::before{content:"";position:absolute;left:26px;right:26px;top:0;height:
   .unit{width:min(560px,100%);height:auto;flex:none;grid-template-columns:minmax(0,1fr);grid-template-rows:auto auto;
     grid-template-areas:"screen" "module";padding:0;border-radius:0;background:none;box-shadow:none}
   .panel,.wheel-slot,.screw,.hood{display:none}
-  .model{grid-area:module;justify-self:start;align-self:start;margin:10px 0 0 calc(6% + 18px);min-height:24px;z-index:3;
-    font-size:9px;letter-spacing:.05em;padding:3px 4px;color:#9ba992;border-color:transparent;background:none;box-shadow:none}
-  .model:hover{color:#d3cdae}
-  .bezel{width:100%;min-width:0;aspect-ratio:4/3;min-height:304px;padding:clamp(18px,6vw,36px);border:2px solid #0b130e;border-radius:9% / 10%;
+  .model{grid-area:module;justify-self:start;align-self:start;margin:10px 0 0 calc(6% + 18px);min-height:28px;z-index:3;
+    font-size:9px;letter-spacing:.05em;padding:3px 4px;color:#b2bea9;border-color:#71816b;background:#18271d;box-shadow:inset 0 1px 0 rgba(172,189,158,.12)}
+  .model:hover,.model:focus-visible{color:#d3cdae;border-color:#b2bea9}
+  .bezel{width:100%;min-width:0;aspect-ratio:1;min-height:304px;padding:clamp(10px,3vw,16px);border:2px solid #0b130e;border-radius:24px;
     background:var(--grime),linear-gradient(145deg,#2b3a30,#131e17 45%,#233228);
     box-shadow:inset 0 2px 0 rgba(143,165,145,.18),inset 0 -4px 0 #080f0b,0 0 0 3px #111c15,0 18px 35px rgba(0,0,0,.65)}
-  .screen{border-radius:12% / 10%;
+  .screen{border-radius:24px;
     box-shadow:inset 0 0 90px #000,inset 0 0 20px #000,0 0 0 5px #060d08,0 0 0 8px rgba(69,87,72,.35)}
   .boot{padding:16px;gap:12px}
   .boot-log{font-size:12px;line-height:1.4}
@@ -252,7 +252,7 @@ nav.subs::before{content:"";position:absolute;left:26px;right:26px;top:0;height:
   .btn button{width:44px;height:44px;border-radius:4px;background:linear-gradient(145deg,#35483a,#142219);
     box-shadow:inset 0 1px 1px rgba(172,189,158,.2),0 2px 0 #050c07,0 0 0 2px #0b150e}
   .btn button[aria-pressed="true"]{background:radial-gradient(circle at 40% 35%,#f1e9c1,#aba27c 50%,#625e46);
-    box-shadow:inset 0 1px 1px #fff3c8,0 0 0 2px #495644,0 0 8px rgba(255,231,170,.14);transform:translateY(1px)}
+    box-shadow:inset 0 1px 1px #fff3c8,0 0 0 2px #495644,0 0 8px rgba(255,231,170,.14);transform:none}
   .slots{grid-column:1;grid-row:1;display:block;align-self:end;height:28px;padding:0;border-radius:3px;
     background:repeating-linear-gradient(90deg,#060d09 0 3px,#34473a 3px 4px,transparent 4px 10px);
     box-shadow:inset 0 2px 3px #080e09,0 1px 0 rgba(110,134,109,.2)}
