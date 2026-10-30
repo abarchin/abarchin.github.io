@@ -2,12 +2,12 @@
   <title>Battle-worn olive wrist-computer casing with chipped paint and oxidized metal</title>
   <defs>
     <linearGradient id="paint" x1="0" y1="0" x2="1" y2="1">
-      <stop stop-color="#77705a"/><stop offset=".16" stop-color="#565441"/>
-      <stop offset=".43" stop-color="#444638"/><stop offset=".78" stop-color="#363b30"/>
-      <stop offset="1" stop-color="#5b5947"/>
+      <stop stop-color="#62634f"/><stop offset=".16" stop-color="#50523f"/>
+      <stop offset=".43" stop-color="#414436"/><stop offset=".78" stop-color="#34392d"/>
+      <stop offset="1" stop-color="#4e503f"/>
     </linearGradient>
     <linearGradient id="edge" x2=".8" y2="1">
-      <stop stop-color="#787965"/><stop offset=".12" stop-color="#555a48"/>
+      <stop stop-color="#686b58"/><stop offset=".12" stop-color="#555a48"/>
       <stop offset=".42" stop-color="#353b2f"/><stop offset=".8" stop-color="#20271f"/>
       <stop offset="1" stop-color="#535946"/>
     </linearGradient>
@@ -67,16 +67,12 @@
       <path d="m64 34 21-6m-64 89 14-2m94-22 18-8m-58 46 7-4" stroke="#101a13" stroke-opacity=".5"/>
       <path d="m49 55 3-2 4 1-3 2zm98 62 2-5 1 7-3 3z" fill="#a4afa0" fill-opacity=".3"/>
     </pattern>
+    <!-- Fine surface grain only; broad noise makes the paint look camouflaged. -->
     <filter id="grain" x="0" y="0" width="100%" height="100%" color-interpolation-filters="sRGB">
-      <feTurbulence type="fractalNoise" baseFrequency=".037 .065" numOctaves="4" seed="12"/>
-      <feColorMatrix values="0 0 0 0 .1  0 0 0 0 .085  0 0 0 0 .055  2.8 0 0 0 -.95"/>
-      <feComponentTransfer><feFuncA type="linear" slope=".28"/></feComponentTransfer>
-      <feComposite in2="SourceAlpha" operator="in" result="grime"/>
-      <feBlend in="SourceGraphic" in2="grime" mode="multiply" result="patina"/>
-      <feTurbulence type="fractalNoise" baseFrequency=".65" numOctaves="3" seed="27"/>
-      <feColorMatrix values="0 0 0 0 .08  0 0 0 0 .085  0 0 0 0 .065  .4 0 0 0 0"/>
+      <feTurbulence type="fractalNoise" baseFrequency=".9" numOctaves="2" seed="27"/>
+      <feColorMatrix values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  .2 0 0 0 0"/>
       <feComposite in2="SourceAlpha" operator="in" result="speckle"/>
-      <feBlend in="patina" in2="speckle" mode="soft-light"/>
+      <feBlend in="SourceGraphic" in2="speckle" mode="multiply"/>
     </filter>
     <filter id="flaking" x="0" y="0" width="100%" height="100%">
       <feTurbulence type="fractalNoise" baseFrequency=".11 .18" numOctaves="3" seed="8"/>
@@ -284,12 +280,12 @@
       stroke-width="3" stroke-opacity=".4"/>
   </g>
   <g mask="url(#worn)">
-    <g fill="#766244" fill-opacity=".4" stroke="#493b29" stroke-opacity=".45" stroke-width="3">
+    <g fill="#766244" fill-opacity=".18" stroke="#493b29" stroke-opacity=".25" stroke-width="2">
       <path d="m71 181 11-21 9 3-7 30-14 4zm5 152 20 2-8 30-13-9zm18 156 12-2 8 18-20-4z"/>
       <path d="m288 69 73-2-3 8-49 3-23 8zm486 271 38-1-1 19-16-4-4 28-14-9z"/>
       <path d="m378 401 13-1 5 82-12 2zm243-1 12 1 2 72-9 3zm-211 91 28-2-5 9-27 3z"/>
     </g>
-    <g fill="url(#steel)" opacity=".85">
+    <g fill="url(#steel)" opacity=".65">
       <path d="m75 180 5-13 5 1-1 10 4 3-5 7-7-2-4 6-3-2zm9-25 3-7 4 2-3 7z"/>
       <path d="m74 333 11 2 5-2 4 5-6 4 1 8-8-2-2 9-5-4zm-4 44 5-3 3 10-5 12-4-3z"/>
       <path d="m96 484 7 2 2 9 7 6-6 3-14-5zm13 10 8 1 4 5-9 2zm-36 74 3-2 5 11-5 6-4-4z"/>
@@ -306,9 +302,9 @@
       <path d="m629 522 6-5 2 38-5 9zm3 71 7-3 1 33-6-1zm-222-99 16-3 8 3-7 3-17 2z"/>
       <path d="m467 491 18-2 4 4-16 2zm84 2 15-3 10 3-4 3-17 1zm-136 122 19-1 4 5-22 1z"/>
     </g>
-    <g fill="none" stroke="url(#steel)" stroke-width="4" stroke-opacity=".65">
-      <path d="M78 228h133m-129 25h99m-103 24h128m-126 22h125"/>
-      <path d="m239 196 20 1m-25 5v102m8 26 17-1M298 453h74m289 0h49q29-1 33-24"/>
+    <g fill="none" stroke="url(#steel)" stroke-width="2.5" stroke-opacity=".55">
+      <path d="M78 228h37m43 0h19M82 253h18M172 277h28M80 299h16m40 0h24"/>
+      <path d="m239 196 20 1m-25 5v102m8 26 17-1M298 453h30m14 0h12M681 453h29q29-1 33-24"/>
       <path d="m50 182-5 100m0 56 1 86m252 55 10 144m73-211 5 198m240-187 4 141"/>
     </g>
   </g>
