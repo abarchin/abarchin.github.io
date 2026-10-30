@@ -141,11 +141,8 @@
     <path d="M76 485h149v68H75zm0 77h177v30H75zm0 40h188v23H76z" fill="#222b21" stroke="#71745c" stroke-opacity=".45"/>
     <path d="M247 471 321 448l353 14 92 47-50 57-61 21-36 38H229l-27-43z"
       fill="url(#paint)" stroke="url(#edge)" stroke-width="5"/>
-    <path d="m289 469 57-3 17 187-67 6z" fill="url(#rim)" stroke="#747761" stroke-opacity=".5" stroke-width="2"/>
-    <path d="m303 480 28-3 17 169-39 1z" fill="url(#scuffs)"/>
-    <path d="m177 514 56-17 19 70-61 25z" fill="url(#rubber)" stroke="#454e3b" stroke-width="5"/>
-    <path d="m182 520 9 37m7-44 10 37m-1-39 11 35m-3-38 12 36m-3-39 11 36"
-      stroke="#7d8266" stroke-opacity=".45" stroke-width="3"/>
+    <rect x="289" y="466" width="57" height="193" fill="url(#rim)" stroke="#747761" stroke-opacity=".5" stroke-width="2"/>
+    <rect x="299" y="478" width="37" height="169" fill="url(#scuffs)"/>
 
     <path d="M59 116 72 135 91 108Q111 56 153 56q41-4 68 27l32 9 24 60-12 300-30 31-35 20-50 14-53-7-32-45z"
       fill="url(#paint)" stroke="url(#edge)" stroke-width="6"/>
@@ -321,7 +318,7 @@
     <g fill="none" stroke="url(#steel)" stroke-width="2.5" stroke-opacity=".55">
       <path d="M78 228h37m43 0h19M82 253h18M172 277h28M80 299h16m40 0h24"/>
       <path d="m239 196 20 1m-25 5v102m8 26 17-1M298 453h30m14 0h12M681 453h29q29-1 33-24"/>
-      <path d="m50 182-5 100m0 56 1 86m252 55 10 144m73-211 5 198m240-187 4 141"/>
+      <path d="M50 182 45 282M45 338 46 424M293 479V623M381 412 386 610M626 423 630 564"/>
     </g>
   </g>
   <g stroke="#a7b5a0" stroke-opacity=".3" stroke-linecap="square" mask="url(#worn)">
