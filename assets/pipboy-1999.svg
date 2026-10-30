@@ -227,6 +227,9 @@
     <path d="M-11-32v62" stroke="#253d30" stroke-width="2"/>
     <circle cx="-18" cy="-18" r="3" fill="#a4b19b" stroke="#425846"/>
     <circle cx="-18" cy="18" r="3" fill="#a4b19b" stroke="#425846"/>
+    <!-- Radiation trefoil painted on the steel cover: aged yellow disc, three 60-degree blades. -->
+    <circle cx="-25" cy="0" r="8.6" fill="#b9a24a" stroke="#3a3a22" stroke-width=".8"/>
+    <g fill="#1f2419"><circle cx="-25" cy="0" r="1.6"/><path d="M-23.70 -2.25L-21.40 -6.24A7.2 7.2 0 0 1 -17.80 -0.00L-22.40 -0.00A2.6 2.6 0 0 0 -23.70 -2.25ZM-23.70 2.25L-21.40 6.24A7.2 7.2 0 0 1 -28.60 6.24L-26.30 2.25A2.6 2.6 0 0 0 -23.70 2.25ZM-27.60 0.00L-32.20 0.00A7.2 7.2 0 0 1 -28.60 -6.24L-26.30 -2.25A2.6 2.6 0 0 0 -27.60 0.00Z"/></g>
     </g>
     <ellipse rx="35" ry="37" fill="url(#soot)" opacity=".55"/>
     <path d="M-33-23q5-9 16-12m26-2 9 4m-52 53 5 8m26 10 12-4"
