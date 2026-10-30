@@ -13,12 +13,11 @@ Only short interaction and startup effects are included; no music or ambient loo
 Fallout 4 startup sound
 Bethesda Game Studios / Bethesda Softworks
 
-Source: site-owner-supplied "AudioTranscriberAI_Fallout 4 Pip-boy sfx.mp3"
-(the supplied file contains WebM audio despite its filename).
-Output: original/ui_pipboy_boot.wav (full quality), ui_pipboy_boot.wav (lo-fi)
-Excerpt selected by the site owner: 00:08.000-00:10.000 (2 seconds).
+Source: site-owner-supplied "Fallout 4 Pip Boy app Start Up Animation for screen saver.mp3"
+Output: original/ui_pipboy_boot.wav (full quality), ui_pipboy_boot.wav (lo-fi, 22050 Hz)
+Excerpt selected by the site owner: 00:07.000-00:11.000 (4 seconds).
 Decoded to 48 kHz stereo PCM WAV, peak-normalized to 0.8, with a 10 ms
 fade-in and 40 ms fade-out to avoid clicks at the cut points.
 All rights to the original recording remain with their respective owners.
 
-The site plays lo-fi copies (mono, 11025 Hz, 8-bit WAV). Full-quality originals are kept in original/.
+The site plays lo-fi copies (mono, 8-bit WAV; 11025 Hz, boot sound 22050 Hz). Full-quality originals are kept in original/.
