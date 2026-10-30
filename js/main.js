@@ -130,11 +130,18 @@ new ResizeObserver(([entry])=>{
   $("unit").style.setProperty("--screen-scale",Math.min(1,entry.contentRect.width/680));
 }).observe(document.querySelector(".bezel"));
 
-// worn paint: dark grime speckle plus a few chips showing bare steel
-(()=>{const c=document.createElement("canvas");c.width=c.height=256;const x=c.getContext("2d");
-  for(let i=0;i<2200;i++){x.fillStyle=`rgba(0,0,0,${Math.random()*.18})`;x.fillRect(Math.random()*256,Math.random()*256,1+Math.random()*2,1+Math.random()*2)}
-  for(let i=0;i<7;i++){x.fillStyle=`rgba(154,166,168,${.15+Math.random()*.25})`;x.beginPath();const cx=Math.random()*256,cy=Math.random()*256;
-    for(let k=0;k<6;k++){const a=k/6*Math.PI*2,r=1+Math.random()*3.5;x.lineTo(cx+Math.cos(a)*r*1.6,cy+Math.sin(a)*r)}x.fill()}
+// worn paint: soot blotches, grain, hairline scratches and small dark chips; drawn wrapped so the tile is seamless
+(()=>{const W=320,c=document.createElement("canvas");c.width=c.height=W;const x=c.getContext("2d"),R=Math.random;
+  const wrap=f=>{for(const dx of [-W,0,W])for(const dy of [-W,0,W]){x.save();x.translate(dx,dy);f();x.restore()}};
+  for(let i=0;i<14;i++){const cx=R()*W,cy=R()*W,r=20+R()*60,a=.05+R()*.08;wrap(()=>{const g=x.createRadialGradient(cx,cy,0,cx,cy,r);
+    g.addColorStop(0,`rgba(8,12,8,${a})`);g.addColorStop(1,"rgba(8,12,8,0)");x.fillStyle=g;x.fillRect(cx-r,cy-r,r*2,r*2)})}
+  for(let i=0;i<5000;i++){x.fillStyle=R()<.5?`rgba(0,0,0,${R()*.12})`:`rgba(200,210,190,${R()*.04})`;x.fillRect(R()*W,R()*W,1,1)}
+  for(let i=0;i<40;i++){const sx=R()*W,sy=R()*W,ang=-.35+R()*.7+(R()<.3?Math.PI/2:0),len=6+R()*26,light=R()<.6;
+    wrap(()=>{x.strokeStyle=light?`rgba(190,200,175,${.05+R()*.08})`:`rgba(0,0,0,${.15+R()*.15})`;x.lineWidth=.5+R()*.4;
+      x.beginPath();x.moveTo(sx,sy);x.lineTo(sx+Math.cos(ang)*len,sy+Math.sin(ang)*len);x.stroke()})}
+  for(let i=0;i<18;i++){const cx=R()*W,cy=R()*W,n=5+(R()*4|0),pts=[];for(let k=0;k<n;k++){const a=k/n*Math.PI*2,r=.6+R()*2.2;pts.push([Math.cos(a)*r*1.4,Math.sin(a)*r])}
+    const path=(ox,oy)=>{x.beginPath();pts.forEach(([px,py])=>x.lineTo(cx+px+ox,cy+py+oy));x.closePath()};
+    wrap(()=>{path(.6,.6);x.fillStyle="rgba(170,180,160,.12)";x.fill();path(0,0);x.fillStyle=`rgba(6,10,7,${.45+R()*.3})`;x.fill()})}
   document.documentElement.style.setProperty("--grime",`url(${c.toDataURL()})`)})();
 
 function items(){const d=D[L];
