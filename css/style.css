@@ -1,6 +1,6 @@
 *,*::before,*::after{box-sizing:border-box}
 body{margin:0}
-/* Desktop: 3000-series wrist unit. Mobile: a dark terminal CRT with a vented control base. */
+/* Desktop: 1999-series wrist unit. Mobile: a dark terminal CRT with a vented control base. */
 :root{
   --metal:#3d3b29;       /* worn olive-brown paint */
   --metal-hi:#5a5840;
@@ -177,7 +177,7 @@ nav.subs::before{content:"";position:absolute;left:26px;right:26px;top:0;height:
 @media (min-width:761px){
   body::after{display:none}
   .unit{display:block;width:min(1600px,100%,calc((100dvh - 28px) * 950 / 675));height:auto;aspect-ratio:950/675;
-    padding:0;border-radius:0;background:url("../assets/pipboy-3000.svg") center/100% 100% no-repeat;box-shadow:none}
+    padding:0;border-radius:0;background:url("../assets/pipboy-1999.svg") center/100% 100% no-repeat;box-shadow:none}
   .screw,.nameplate,.vents,.scale,.side-label,.hood,.slots,.clamp{display:none}
   .panel,.selector,.wheel-slot,.module{display:contents}
   .gauge{display:block;position:absolute;left:12.315789%;top:12%;width:9.894737%;height:auto;aspect-ratio:94/96;overflow:visible;pointer-events:none}

@@ -66,7 +66,7 @@ $("theme-toggle").onclick=()=>{
   render();playSound("select");
 };
 
-const sounds=Object.fromEntries(["mode","tab","scroll","select","tuner","light_on","light_off","access_up","highlight"].map(name=>{
+const sounds=Object.fromEntries(["mode","tab","scroll","select","tuner","light_on","light_off","boot"].map(name=>{
   const audio=new Audio(`assets/audio/ui_pipboy_${name}.wav`);audio.preload="auto";audio.volume=.35;return [name,audio];
 }));
 let soundEnabled=true,activeSound;
@@ -80,7 +80,7 @@ function playSound(name,onStart){if(!soundEnabled)return;
   if(activeSound){activeSound.pause();activeSound.currentTime=0}
   activeSound=sounds[name];activeSound.currentTime=0;
   activeSound.play().then(onStart,error=>{
-    if(error.name==="NotAllowedError"&&name==="access_up"){
+    if(error.name==="NotAllowedError"&&name==="boot"){
       if($("boot")&&soundEnabled){
         clearTimeout(bootTimer);
         $("boot").classList.remove("booting");
@@ -100,19 +100,23 @@ $("sound-toggle").onclick=()=>{
   }else if(soundEnabled)playSound("select");
 };
 
-let bootTimer,bootAudioStarted=false;
+let bootTimer;
 function startBoot(){
   const boot=$("boot");if(!boot)return;
-  clearTimeout(bootTimer);bootAudioStarted=false;$("boot-sound").hidden=true;
+  clearTimeout(bootTimer);$("boot-sound").hidden=true;
   boot.classList.add("booting");
   for(const animation of boot.getAnimations({subtree:true})){animation.currentTime=0;animation.play()}
-  bootTimer=setTimeout(finishBoot,2000);
-  playSound("access_up",()=>{bootAudioStarted=true});
+  bootTimer=setTimeout(()=>finishBoot(false),2000);
+  playSound("boot",()=>{
+    if(!$("boot"))return;
+    clearTimeout(bootTimer);
+    bootTimer=setTimeout(()=>finishBoot(false),2000);
+  });
 }
-function finishBoot(){
+function finishBoot(stopSound=true){
   clearTimeout(bootTimer);
   const boot=$("boot");if(!boot)return;
-  activeSound?.pause();bootAudioStarted=false;
+  if(stopSound)activeSound?.pause();
   const restoreFocus=boot.contains(document.activeElement);
   boot.remove();
   for(const id of ["hud","main","subs"])$(id).inert=false;
@@ -120,9 +124,6 @@ function finishBoot(){
 }
 $("boot-skip").onclick=()=>{finishBoot();playSound("select")};
 $("boot-sound").onclick=startBoot;
-$("boot").addEventListener("animationstart",e=>{
-  if(e.animationName==="boot-line"&&e.target.dataset.bootSound&&bootAudioStarted)playSound(e.target.dataset.bootSound);
-});
 
 // Fit the existing desktop UI into the reference casing without clipping its HUD.
 new ResizeObserver(([entry])=>{

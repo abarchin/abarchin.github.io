@@ -1,4 +1,4 @@
-Fallout 3 user-interface sound effects
+Fallout 3 user-interface interaction sound effects
 Bethesda Game Studios / Bethesda Softworks
 
 Pack: PC / Computer - Fallout 3 - Miscellaneous - User Interface
@@ -9,3 +9,14 @@ redistribution. Original filenames and audio are retained.
 All rights to the original sounds remain with their respective owners.
 
 Only short interaction and startup effects are included; no music or ambient loops.
+
+Fallout 4 startup sound
+Bethesda Game Studios / Bethesda Softworks
+
+Source: site-owner-supplied "AudioTranscriberAI_Fallout 4 Pip-boy sfx.mp3"
+(the supplied file contains WebM audio despite its filename).
+Output: ui_pipboy_boot.wav
+Excerpt selected by the site owner: 00:14.000-00:16.000 (2 seconds).
+Decoded to 48 kHz stereo PCM WAV, peak-normalized to 0.8, with a 10 ms
+fade-in and 40 ms fade-out to avoid clicks at the cut points.
+All rights to the original recording remain with their respective owners.
