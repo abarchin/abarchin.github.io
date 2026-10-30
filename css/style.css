@@ -139,12 +139,12 @@ nav.subs::before{content:"";position:absolute;left:26px;right:26px;top:0;height:
 
 @media (max-width:1000px){.unit{grid-template-columns:160px 36px minmax(0,1fr)}.clamp,.screw.r{display:none}.unit{grid-template-areas:"left wheel hood" "left wheel screen" "left wheel module"}
   .selector{transform:scale(.85);transform-origin:center bottom}header.hud .loc{display:none}}
-/* Native 950 x 675 casing; hotspots follow the photographed controls.
+/* Scalable vector casing; hotspots share its 950 x 675 coordinate system.
    Phones retain the screen-first layout below. */
 @media (min-width:761px){
   body::after{display:none}
   .unit{display:block;width:min(1600px,100%,calc((100dvh - 28px) * 950 / 675));height:auto;aspect-ratio:950/675;
-    padding:0;border-radius:0;background:url("../assets/pipboy-3000.webp") center/100% 100% no-repeat;box-shadow:none}
+    padding:0;border-radius:0;background:url("../assets/pipboy-3000.svg") center/100% 100% no-repeat;box-shadow:none}
   .screw,.gauge,.nameplate,.vents,.model,.scale,.side-label,.hood,.slots,.clamp{display:none}
   .panel,.selector,.wheel-slot,.module{display:contents}
   .bezel{position:absolute;left:32.63%;top:17.78%;width:41.68%;height:41.48%;
