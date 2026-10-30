@@ -152,7 +152,7 @@ nav.subs::before{content:"";position:absolute;left:26px;right:26px;top:0;height:
   .screen{zoom:var(--screen-scale,1)}
   .selector .knob,.wheel,.flash{position:absolute;inset:auto;margin:0;padding:0;border:0;
     background:none;box-shadow:none}
-  .selector .knob{left:9.052632%;top:51.407407%;width:9.684211%;height:auto;aspect-ratio:1;transform:rotate(15deg)}
+  .selector .knob{left:9.052632%;top:51.407407%;width:9.684211%;height:auto;aspect-ratio:1;transform:rotate(45deg)}
   .selector .knob svg{display:block;width:100%;height:100%;overflow:visible;pointer-events:none}
   .selector .knob::after{display:none}
   .wheel{left:25.05%;top:30.22%;width:2.53%;height:18.81%}

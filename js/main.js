@@ -93,7 +93,7 @@ function items(){const d=D[L];
 }
 function render(){const d=D[L],tabs=subsOf(mode);cancelAnimationFrame(raf);updateSoundButton();
   // Both three- and four-tab modes align with the fixed 25-degree scale marks.
-  $("knob").style.transform=`rotate(${15+sub*150/Math.max(1,tabs.length-1)}deg)`;
+  $("knob").style.transform=`rotate(${45+sub*150/Math.max(1,tabs.length-1)}deg)`;
   const y=(Date.now()-START)/(365.25*864e5),yrs=Math.floor(y),now=new Date();
   $("hud").innerHTML=`<span class="mode">${d.modes[mode]}</span><span class="hl"><span>${d.lvl} ${yrs}</span><span>XP <span class="xp"><i style="width:${Math.round(y%1*100)}%"></i></span></span><span class="yrs">${yrs} ${d.yrs}</span><span class="loc">ALCALÁ</span><span class="clock" id="clock">${now.toTimeString().slice(0,5)}</span><span class="lang" role="group" aria-label="Language"><button id="lang-en" aria-pressed="${L==="en"}" data-l="en">EN</button><button id="lang-es" aria-pressed="${L==="es"}" data-l="es">ES</button></span></span>`;
   $("btns").innerHTML=d.modes.map((m,i)=>`<div class="btn"><label for="btn-${i}">${m}</label><button id="btn-${i}" data-m="${i}" aria-pressed="${i===mode}" aria-label="${m}"></button></div>`).join("");
