@@ -1,29 +1,35 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="950" height="675" viewBox="0 0 950 675" fill="none">
-  <title>Weathered olive wrist-computer casing</title>
+  <title>Battle-worn olive wrist-computer casing with chipped paint and oxidized metal</title>
   <defs>
     <linearGradient id="paint" x1="0" y1="0" x2="1" y2="1">
-      <stop stop-color="#686b53"/><stop offset=".3" stop-color="#444839"/>
-      <stop offset=".7" stop-color="#33372c"/><stop offset="1" stop-color="#50503d"/>
+      <stop stop-color="#77705a"/><stop offset=".16" stop-color="#565441"/>
+      <stop offset=".43" stop-color="#444638"/><stop offset=".78" stop-color="#363b30"/>
+      <stop offset="1" stop-color="#5b5947"/>
     </linearGradient>
     <linearGradient id="edge" x2=".8" y2="1">
-      <stop stop-color="#a0a28b"/><stop offset=".18" stop-color="#626854"/>
-      <stop offset=".48" stop-color="#33372d"/><stop offset=".8" stop-color="#181d18"/>
-      <stop offset="1" stop-color="#757965"/>
+      <stop stop-color="#787965"/><stop offset=".12" stop-color="#555a48"/>
+      <stop offset=".42" stop-color="#353b2f"/><stop offset=".8" stop-color="#20271f"/>
+      <stop offset="1" stop-color="#535946"/>
     </linearGradient>
     <linearGradient id="steel" x2=".85" y2="1">
-      <stop stop-color="#b1b8aa"/><stop offset=".26" stop-color="#757f73"/>
-      <stop offset=".55" stop-color="#3c4942"/><stop offset="1" stop-color="#879285"/>
+      <stop stop-color="#99a297"/><stop offset=".16" stop-color="#707f76"/>
+      <stop offset=".36" stop-color="#55645b"/><stop offset=".6" stop-color="#33443c"/>
+      <stop offset=".85" stop-color="#6e7b70"/><stop offset="1" stop-color="#879085"/>
     </linearGradient>
     <linearGradient id="rim" x2="0" y2="1">
-      <stop stop-color="#717760"/><stop offset=".12" stop-color="#414737"/>
-      <stop offset=".48" stop-color="#292e25"/><stop offset=".9" stop-color="#383e31"/>
-      <stop offset="1" stop-color="#747765"/>
+      <stop stop-color="#676852"/><stop offset=".09" stop-color="#515440"/>
+      <stop offset=".3" stop-color="#363c2e"/><stop offset=".7" stop-color="#2d3429"/>
+      <stop offset=".94" stop-color="#4a503e"/><stop offset="1" stop-color="#686b54"/>
+    </linearGradient>
+    <linearGradient id="recess" x2=".35" y2="1">
+      <stop stop-color="#111711"/><stop offset=".22" stop-color="#242d22"/>
+      <stop offset=".76" stop-color="#1b241c"/><stop offset="1" stop-color="#404535"/>
     </linearGradient>
     <linearGradient id="rubber" x2="0" y2="1">
       <stop stop-color="#0b100e"/><stop offset=".5" stop-color="#1a211a"/><stop offset="1" stop-color="#070c09"/>
     </linearGradient>
     <linearGradient id="rib" x2="0" y2="1">
-      <stop stop-color="#797b63"/><stop offset=".18" stop-color="#555a44"/>
+      <stop stop-color="#787a60"/><stop offset=".18" stop-color="#5b5c45"/>
       <stop offset=".54" stop-color="#3a3f30"/><stop offset=".84" stop-color="#262c22"/><stop offset="1" stop-color="#11180f"/>
     </linearGradient>
     <linearGradient id="brass" x2="1" y2="0">
@@ -31,19 +37,25 @@
       <stop offset=".58" stop-color="#b1a776"/><stop offset="1" stop-color="#4d513a"/>
     </linearGradient>
     <radialGradient id="dial" cx=".36" cy=".3" r=".75">
-      <stop stop-color="#3f4d43"/><stop offset=".6" stop-color="#202d26"/><stop offset="1" stop-color="#0a1410"/>
+      <stop stop-color="#536057"/><stop offset=".3" stop-color="#303e35"/>
+      <stop offset=".66" stop-color="#1e2b24"/><stop offset="1" stop-color="#0a1410"/>
     </radialGradient>
     <radialGradient id="paper" cx=".65" cy=".35" r=".75">
-      <stop stop-color="#d7d8ac"/><stop offset=".65" stop-color="#b2ba8b"/><stop offset="1" stop-color="#687b57"/>
+      <stop stop-color="#bfc199"/><stop offset=".55" stop-color="#a5ac7e"/><stop offset="1" stop-color="#5b704f"/>
     </radialGradient>
     <radialGradient id="amber" cx=".4" cy=".34" r=".7">
       <stop stop-color="#ffe79c"/><stop offset=".25" stop-color="#ffc342"/>
       <stop offset=".62" stop-color="#f48c13"/><stop offset=".85" stop-color="#bf5008"/><stop offset="1" stop-color="#622a09"/>
     </radialGradient>
     <linearGradient id="glass" x2=".5" y2="1">
-      <stop stop-color="#e3f8e6" stop-opacity=".27"/><stop offset=".48" stop-color="#c4dfcc" stop-opacity="0"/>
+      <stop stop-color="#e3f8e6" stop-opacity=".18"/><stop offset=".48" stop-color="#c4dfcc" stop-opacity="0"/>
       <stop offset="1" stop-color="#06170c" stop-opacity=".3"/>
     </linearGradient>
+    <radialGradient id="soot">
+      <stop offset=".45" stop-color="#231f13" stop-opacity="0"/>
+      <stop offset=".78" stop-color="#1f2014" stop-opacity=".25"/>
+      <stop offset="1" stop-color="#100f0a" stop-opacity=".85"/>
+    </radialGradient>
     <pattern id="wheel-ribs" width="24" height="8" patternUnits="userSpaceOnUse">
       <path d="M0 1h24" stroke="#c5b780" stroke-opacity=".65"/>
       <path d="M0 4h24" stroke="#2b3427" stroke-width="3"/>
@@ -55,28 +67,49 @@
       <path d="m64 34 21-6m-64 89 14-2m94-22 18-8m-58 46 7-4" stroke="#101a13" stroke-opacity=".5"/>
       <path d="m49 55 3-2 4 1-3 2zm98 62 2-5 1 7-3 3z" fill="#a4afa0" fill-opacity=".3"/>
     </pattern>
-    <filter id="grain" x="0" y="0" width="100%" height="100%">
+    <filter id="grain" x="0" y="0" width="100%" height="100%" color-interpolation-filters="sRGB">
+      <feTurbulence type="fractalNoise" baseFrequency=".037 .065" numOctaves="4" seed="12"/>
+      <feColorMatrix values="0 0 0 0 .1  0 0 0 0 .085  0 0 0 0 .055  2.8 0 0 0 -.95"/>
+      <feComponentTransfer><feFuncA type="linear" slope=".28"/></feComponentTransfer>
+      <feComposite in2="SourceAlpha" operator="in" result="grime"/>
+      <feBlend in="SourceGraphic" in2="grime" mode="multiply" result="patina"/>
       <feTurbulence type="fractalNoise" baseFrequency=".65" numOctaves="3" seed="27"/>
-      <feColorMatrix values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  .28 0 0 0 0"/>
+      <feColorMatrix values="0 0 0 0 .08  0 0 0 0 .085  0 0 0 0 .065  .4 0 0 0 0"/>
       <feComposite in2="SourceAlpha" operator="in" result="speckle"/>
-      <feBlend in="SourceGraphic" in2="speckle" mode="multiply"/>
+      <feBlend in="patina" in2="speckle" mode="soft-light"/>
+    </filter>
+    <filter id="flaking" x="0" y="0" width="100%" height="100%">
+      <feTurbulence type="fractalNoise" baseFrequency=".11 .18" numOctaves="3" seed="8"/>
+      <feColorMatrix values="0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  9 0 0 0 -3.9"/>
+    </filter>
+    <mask id="worn" maskUnits="userSpaceOnUse" x="0" y="0" width="950" height="675">
+      <rect width="950" height="675" fill="white" filter="url(#flaking)"/>
+    </mask>
+    <filter id="smudge" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="2.5"/>
     </filter>
     <filter id="shadow" x="-15%" y="-15%" width="130%" height="140%">
       <feDropShadow dx="0" dy="4" stdDeviation="3" flood-color="#030806" flood-opacity=".8"/>
     </filter>
-    <g id="screw">
-      <circle r="13" fill="#1b251c"/>
-      <circle r="10" fill="url(#steel)" stroke="#5c6958" stroke-width="2"/>
-      <circle r="6.5" fill="#323f35" stroke="#98a18f" stroke-width=".8"/>
+    <g id="screw" filter="url(#grain)">
+      <circle r="13" fill="#1b2118" stroke="#726047" stroke-opacity=".35" stroke-width="2"/>
+      <circle r="10" fill="url(#steel)" stroke="#4d5a4a" stroke-width="1.5"/>
+      <circle r="6.5" fill="#37463a" stroke="#778875" stroke-width=".6"/>
       <path d="M-5-1h4v-4h2v4h4v2H1v4h-2V1h-4z" fill="#111b15" transform="rotate(28)"/>
-      <path d="M-8-3a9 9 0 0 1 8-6" stroke="#c3c7b2" stroke-opacity=".55"/>
+      <path d="M-8-3a9 9 0 0 1 8-6m3 1 3 2M-5 6l3 2" stroke="#bbc3ad" stroke-opacity=".5"/>
+      <path d="M-10 2a10 10 0 0 0 9 9M3-10l4 2" stroke="#69533a" stroke-width="2" stroke-opacity=".65"/>
+      <circle r="9" fill="url(#soot)"/>
     </g>
     <g id="lamp">
-      <circle r="24" fill="#20281e" stroke="#666c55" stroke-width="2"/>
-      <circle cy="2" r="20" fill="#161d16" stroke="#8f9580" stroke-width="3"/>
-      <circle r="17" fill="#7c542e" stroke="#b2a07a" stroke-width="1.5"/>
+      <g filter="url(#grain)">
+      <circle r="24" fill="#20261b" stroke="#515840" stroke-width="2"/>
+      <circle cy="2" r="20" fill="#161d16" stroke="#656c59" stroke-width="3"/>
+      <circle r="17" fill="#7c542e" stroke="#8b805e" stroke-width="1.5"/>
+      </g>
       <circle r="14" fill="url(#amber)" stroke="#632d0c" stroke-width="2"/>
       <path d="M-10-3a11 11 0 0 1 14-7" stroke="#ffe7ad" stroke-opacity=".7" stroke-linecap="round"/>
+      <path d="M-20 4a20 20 0 0 0 16 17M-15-15l5-3m23 32 4-5" stroke="#a1a18a" stroke-opacity=".5"/>
+      <path d="M18-14a23 23 0 0 1 4 21m-39 7 7 5" stroke="#372f1f" stroke-width="3" stroke-opacity=".7"/>
     </g>
     <g id="vent">
       <rect width="139" height="19" rx="3" fill="#1a2118"/>
@@ -85,7 +118,7 @@
       <path d="M8 16h119" stroke="#0c140e" stroke-width="2"/>
     </g>
     <g id="slot">
-      <path d="M-8 0H8V98L4 103H-5z" fill="#7a7e63"/>
+      <path d="M-8 0H8V98L4 103H-5z" fill="#545e46"/>
       <path d="M-6 1H5v94l-3 5h-8z" fill="#121c14"/>
       <path d="M-3 4H2v89H-3z" fill="#090f0b"/>
       <path d="M8 3v92" stroke="#a0a086" stroke-opacity=".4"/>
@@ -136,7 +169,7 @@
     <path d="M299 81h420q29 0 30 32v304q0 34-32 36H298q-29-1-29-34V115q0-29 30-34z"
       fill="url(#rim)" stroke="#777c64" stroke-opacity=".3" stroke-width="2"/>
     <path d="M314 101h123l18-10h105l17 10h127q30 0 31 34v276q-1 31-33 32H310q-27-2-28-33V137q1-31 32-36z"
-      fill="#252d23" stroke="#171f17" stroke-width="5"/>
+      fill="url(#recess)" stroke="#171f17" stroke-width="3"/>
     <path d="M341 112h336q35 0 35 33v238q0 37-34 38H342q-36 0-36-37V148q0-35 35-36z"
       fill="url(#rubber)" stroke="#101810" stroke-width="5"/>
     <path d="M296 89h134m160 0h110M274 149v178m9 95q0 17 17 19h68m280 0h65q20 0 22-21"
@@ -146,7 +179,8 @@
 
   <!-- Gauge: engraved scale, aged face, and a half-cover of brushed steel. -->
   <g transform="translate(164 129)" filter="url(#shadow)">
-    <ellipse rx="47" ry="48" fill="#222f24" stroke="#717e68" stroke-width="4"/>
+    <g filter="url(#grain)">
+    <ellipse rx="47" ry="48" fill="#30392c" stroke="#596854" stroke-width="3"/>
     <ellipse rx="39" ry="41" fill="url(#steel)" stroke="#1b291f" stroke-width="3"/>
     <ellipse rx="33" ry="35" fill="url(#paper)" stroke="#0e2117" stroke-width="2"/>
     <path d="M0-27a28 28 0 0 1 27 21" stroke="#a34730" stroke-width="8"/>
@@ -161,18 +195,23 @@
     </g>
     <path d="M-1 0 24-15" stroke="#762c23" stroke-width="2"/>
     <circle r="4" fill="#283a29"/>
-    <path d="M-5-38C-50-34-51 31-5 38z" fill="url(#steel)" stroke="#a0ac95" stroke-width="1.5"/>
+    <path d="M-5-38C-50-34-51 31-5 38z" fill="url(#steel)" stroke="#82907c" stroke-width="1"/>
     <path d="M-11-32v62" stroke="#253d30" stroke-width="2"/>
     <circle cx="-18" cy="-18" r="3" fill="#a4b19b" stroke="#425846"/>
     <circle cx="-18" cy="18" r="3" fill="#a4b19b" stroke="#425846"/>
+    </g>
+    <ellipse rx="35" ry="37" fill="url(#soot)" opacity=".55"/>
+    <path d="M-33-23q5-9 16-12m26-2 9 4m-52 53 5 8m26 10 12-4"
+      stroke="#a6b09c" stroke-opacity=".6" stroke-width="1.5"/>
+    <path d="m-22-9 9-2m-14 2 12-3m-8 22 9-2m26-11 7-6" stroke="#b3bda8" stroke-opacity=".24" stroke-width=".6"/>
     <ellipse rx="33" ry="35" fill="url(#glass)"/>
   </g>
 
   <g filter="url(#grain)">
     <path d="M76 197h139v29H76z" fill="#333e2c" stroke="#182517" stroke-width="2"/>
-    <path d="M80 199h125" stroke="#94987b" stroke-opacity=".5"/>
-    <text x="147" y="216" fill="#111d15" font-family="Georgia,serif" font-size="21" font-style="italic" font-weight="bold" text-anchor="middle">Pip-Boy</text>
-    <text x="146" y="214" fill="#b6c2ad" font-family="Georgia,serif" font-size="21" font-style="italic" font-weight="bold" text-anchor="middle">Pip-Boy</text>
+    <path d="M80 199h125" stroke="#94987b" stroke-opacity=".3"/>
+    <text x="147" y="215" fill="#1c251c" font-family="Georgia,serif" font-size="18" font-style="italic" font-weight="bold" text-anchor="middle">Pip-Boy</text>
+    <text x="146" y="214" fill="#a6b29d" font-family="Georgia,serif" font-size="18" font-style="italic" font-weight="bold" text-anchor="middle">Pip-Boy</text>
     <use href="#vent" x="77" y="228"/><use href="#vent" x="77" y="251"/>
     <use href="#vent" x="77" y="274"/><use href="#vent" x="77" y="297"/>
     <rect x="97" y="309" width="107" height="21" rx="2" fill="#202c20" stroke="#5b6851"/>
@@ -187,16 +226,20 @@
 
   <!-- Rotary selector and its etched crescent scale. -->
   <g transform="translate(132 393)" filter="url(#shadow)">
+    <g filter="url(#grain)">
     <path d="M-30-28Q-8-50 21-33l23-14q19 21 18 49-1 39-34 52-27 10-59-9l15-23z"
-      fill="url(#steel)" stroke="#182d20" stroke-width="3"/>
+      fill="url(#steel)" stroke="#182d20" stroke-width="2"/>
     <path d="m30-35 6 8m8 4-9 6m19 4-11 2m12 14-11-2m4 19-10-5m-1 20-7-9m-8 15-4-11m-11 14-1-12m-13 9 4-11"
-      stroke="#c2c6aa" stroke-width="2"/>
-    <path d="M43-39q24 31 7 60T-25 43" stroke="#bec7b3" stroke-opacity=".55" stroke-width="1.5"/>
+      stroke="#c2c6aa" stroke-opacity=".7" stroke-width="1.4"/>
+    <path d="M43-39q24 31 7 60T-25 43" stroke="#bec7b3" stroke-opacity=".35" stroke-width="1"/>
     <path d="m-12-36 23 1 19 12 9 23-7 24-19 14-23-3-19-15-6-24 9-22z"
-      fill="#22362a" stroke="#859381" stroke-width="3"/>
+      fill="url(#dial)" stroke="#687b6b" stroke-width="2"/>
     <circle r="27" fill="url(#dial)" stroke="#18281f" stroke-width="3"/>
-    <circle r="21" fill="#16281f" stroke="#3c5143" stroke-width="2"/>
-    <path d="m-8-33 15 1 6 5-6 5H-5z" fill="#9eac96"/>
+    <circle r="21" fill="url(#dial)" stroke="#3c5143" stroke-width="1"/>
+    <path d="m-8-33 15 1 6 5-6 5H-5z" fill="#728470"/>
+    </g>
+    <path d="M-27-12q5-13 19-16m-3 7 9-2m-28 36 4 6m41 10 6-3" stroke="#9ba999" stroke-opacity=".3" stroke-width="1.2"/>
+    <path d="m-11-23 6-1m-20 9 3-6m-3 4 1 4m3 35 5 3m38-14 1-7" stroke="#b8c1ae" stroke-opacity=".3" stroke-width=".7"/>
   </g>
 
   <use href="#screw" x="248" y="135"/>
@@ -204,11 +247,14 @@
   <use href="#screw" x="786" y="450"/>
   <use href="#screw" x="130" y="472"/>
   <use href="#screw" x="675" y="517"/>
-  <g transform="translate(232 464)">
-    <circle r="21" fill="#1c2b1e" stroke="#5a694f" stroke-width="4"/>
-    <circle r="14" fill="url(#steel)" stroke="#253b2c" stroke-width="2"/>
-    <circle r="9" fill="#435b46" stroke="#9aa98e" stroke-width="2"/>
-    <circle r="5" fill="#84967a" stroke="#314c36" stroke-width="2"/>
+  <g transform="translate(232 464)" filter="url(#grain)">
+    <circle r="21" fill="#1d281e" stroke="#49543d" stroke-width="3"/>
+    <circle r="16" fill="url(#steel)" stroke="#293b2d" stroke-width="1.5"/>
+    <circle r="12" fill="url(#steel)" stroke="#80917c" stroke-width=".8"/>
+    <circle r="9" fill="url(#dial)" stroke="#7b8a77" stroke-width="1.2"/>
+    <circle r="5" fill="url(#steel)" stroke="#50654f"/>
+    <path d="m-12-6 4-5m-1-2 6-1m-8 25 4 2" stroke="#afbaa4" stroke-opacity=".5"/>
+    <circle r="14" fill="url(#soot)" opacity=".4"/>
   </g>
 
   <!-- Raised lower switch block, with three physical amber lamps. -->
@@ -218,17 +264,55 @@
     <path d="M403 488h213v126H408z" fill="#35412f" stroke="#262f22" stroke-width="3"/>
     <path d="m407 497 206-1M412 617h202" stroke="#8b9176" stroke-opacity=".3" stroke-width="2"/>
     <use href="#slot" x="435" y="507"/><use href="#slot" x="487" y="507"/><use href="#slot" x="540" y="507"/>
-    <path d="m380 400 12 1 9 231-13 1z" fill="url(#steel)" stroke="#2d3f30" stroke-width="2"/>
-    <path d="m622 400 11 1 7 230-13 2z" fill="url(#steel)" stroke="#2d3f30" stroke-width="2"/>
-    <path d="m383 408 8 215m234-215 8 216" stroke="#b3baa4" stroke-opacity=".45" stroke-width="2"/>
+    <path d="m380 400 12 1 9 231-13 1z" fill="url(#rim)" stroke="#2d3f30" stroke-width="2"/>
+    <path d="m622 400 11 1 7 230-13 2z" fill="url(#rim)" stroke="#2d3f30" stroke-width="2"/>
+    <path d="m383 408 8 215m234-215 8 216" stroke="#b3baa4" stroke-opacity=".3" stroke-width="1.5"/>
   </g>
-  <g fill="#cfbd72" font-family="monospace" font-size="10" font-weight="bold" text-anchor="middle">
+  <g fill="#b7a86a" font-family="monospace" font-size="10" font-weight="bold" text-anchor="middle">
     <text x="453" y="425">STATS</text><text x="506" y="425">ITEMS</text><text x="560" y="425">DATA</text>
   </g>
   <use href="#lamp" x="453" y="450"/><use href="#lamp" x="506" y="450"/><use href="#lamp" x="560" y="450"/>
 
-  <!-- Sparse edge chips and scratches remain vector paths at any scale. -->
-  <g stroke="#a7b5a0" stroke-opacity=".55" stroke-linecap="square">
+  <!-- Dirt collects in recesses; abrasion exposes metal on the raised edges. -->
+  <g stroke="#11170f" stroke-opacity=".65" stroke-linecap="round" filter="url(#smudge)">
+    <path d="M82 333h127M220 227v107M78 483q44 30 104-9M281 158v237q0 45 42 47"
+      stroke-width="8"/>
+    <path d="M775 202v124m44 16-3 89M830 187l-4 257M846 201v332M403 497l5 116h201"
+      stroke-width="9"/>
+    <path d="M412 477h195M396 417l6 197M616 415l5 199" stroke-width="6"/>
+    <path d="m90 345 1 22m115-23 4 40m-89-48 3 13m648-14 1 44m24-34-2 66m-155 85 2 62m-61-55 1 17"
+      stroke-width="3" stroke-opacity=".4"/>
+  </g>
+  <g mask="url(#worn)">
+    <g fill="#766244" fill-opacity=".4" stroke="#493b29" stroke-opacity=".45" stroke-width="3">
+      <path d="m71 181 11-21 9 3-7 30-14 4zm5 152 20 2-8 30-13-9zm18 156 12-2 8 18-20-4z"/>
+      <path d="m288 69 73-2-3 8-49 3-23 8zm486 271 38-1-1 19-16-4-4 28-14-9z"/>
+      <path d="m378 401 13-1 5 82-12 2zm243-1 12 1 2 72-9 3zm-211 91 28-2-5 9-27 3z"/>
+    </g>
+    <g fill="url(#steel)" opacity=".85">
+      <path d="m75 180 5-13 5 1-1 10 4 3-5 7-7-2-4 6-3-2zm9-25 3-7 4 2-3 7z"/>
+      <path d="m74 333 11 2 5-2 4 5-6 4 1 8-8-2-2 9-5-4zm-4 44 5-3 3 10-5 12-4-3z"/>
+      <path d="m96 484 7 2 2 9 7 6-6 3-14-5zm13 10 8 1 4 5-9 2zm-36 74 3-2 5 11-5 6-4-4z"/>
+      <path d="m111 80 10-7 7 1-8 7-4-1-5 5zm55-22 13 1 4 4-11-1zm44 30 8 3 3 5-10-2z"/>
+      <path d="m286 74 17-5 29 1-5 4-22 1-5 5-14 2zm57-7 20 1-5 4-16-1zm102 4 25-1-3 4-17 1z"/>
+      <path d="m704 70 19 1 11 6-2 4-16-6-11 1zm45 31 6 8-1 17-5-4 1-10-4-5z"/>
+      <path d="m262 155 5-5 2 9-3 6 2 16-4 7-3-7zm-1 72 5-3-1 21-4 3zm9 183 4-4 2 21 9 12-7-2-6-10z"/>
+      <path d="m783 133 6 4-1 7 4 5-5 5-4-8-4-3zm-5 207 12 1 3 7-9-1-2 12-5-4z"/>
+      <path d="m791 367 7-6 5 5-4 11-7 1zm16 22 5-3-1 13-6 2zm-26 33 7 1-2 15-5-3z"/>
+      <path d="m856 161 6 3-1 36-5-2-1-14zm-5 73 6-3-2 36-4 1zm-3 189 4-3 1 29-6 9z"/>
+      <path d="m851 535 8-4 2 5-11 11-3-4zm11 13 18-13 6 1-7 8-15 10z"/>
+      <path d="m382 401 6 1 1 28-4 7-3-13zm2 45 5-2 3 19-4 13-4-8zm3 62 5-6 2 27-5 8z"/>
+      <path d="m391 582 5-4 3 41-6 4zm233-180 6 3 1 20-5 6zm2 57 7-1 2 22-5 8-4-14z"/>
+      <path d="m629 522 6-5 2 38-5 9zm3 71 7-3 1 33-6-1zm-222-99 16-3 8 3-7 3-17 2z"/>
+      <path d="m467 491 18-2 4 4-16 2zm84 2 15-3 10 3-4 3-17 1zm-136 122 19-1 4 5-22 1z"/>
+    </g>
+    <g fill="none" stroke="url(#steel)" stroke-width="4" stroke-opacity=".65">
+      <path d="M78 228h133m-129 25h99m-103 24h128m-126 22h125"/>
+      <path d="m239 196 20 1m-25 5v102m8 26 17-1M298 453h74m289 0h49q29-1 33-24"/>
+      <path d="m50 182-5 100m0 56 1 86m252 55 10 144m73-211 5 198m240-187 4 141"/>
+    </g>
+  </g>
+  <g stroke="#a7b5a0" stroke-opacity=".3" stroke-linecap="square" mask="url(#worn)">
     <path d="m82 174 3-7 4 1 2-6m-14 31 7-2m23-92 5-5m-32 242 9 2-3 7m-14 8-1 11m8 106 5 3m-39-36 1 8m217-68 1 16m33-297 13-1m132 1 10-1m-17 4 6-1m281-6 6 4m26 19 2 7m31 53 4 5m-2 92-1 9m-4 56-1 15m-1 19-1 6m57-151 1 15m-5 143-1 19m-4 73 1 11m-399 62 10 1m28-2 5 1m83-1 6-1"
       stroke-width="2.5"/>
     <path d="m101 193 13-1m-22 146 6 1m14 145 8-1m-43 88 18-2m156-395 6 1m39-92 18-2m-33 325 2 12m90 59 8-1m275-32 13-1m40-81 1 12m39-219 4 7m8 238-1 18m-7 160 8-1m62-349-1 26m-450 322 12-1m104 7 8-1"
