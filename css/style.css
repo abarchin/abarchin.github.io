@@ -87,6 +87,7 @@ body::after{content:"";position:absolute;left:0;right:0;top:50%;height:min(56vh,
 .screen::after{content:"";position:absolute;left:0;right:0;height:120px;top:-120px;pointer-events:none;z-index:6;background:linear-gradient(to bottom,transparent,rgba(var(--phos-rgb),.05),transparent);animation:roll 7s linear infinite}
 @keyframes roll{to{top:110%}}
 .lit .screen{filter:brightness(1.3)}
+.bezel-logo{display:none}
 
 /* Startup stays inside the CRT; normal screen layout is untouched underneath. */
 .boot{position:absolute;inset:0;z-index:4;display:flex;flex-direction:column;justify-content:center;gap:24px;padding:24px;
@@ -220,11 +221,14 @@ nav.subs::before{content:"";position:absolute;left:26px;right:26px;top:0;height:
   .model{grid-area:module;justify-self:start;align-self:start;margin:10px 0 0 calc(6% + 18px);min-height:28px;z-index:3;
     font-size:9px;letter-spacing:.05em;padding:3px 4px;color:#b2bea9;border-color:#71816b;background:#18271d;box-shadow:inset 0 1px 0 rgba(172,189,158,.12)}
   .model:hover,.model:focus-visible{color:#d3cdae;border-color:#b2bea9}
-  .bezel{--bezel-padding:clamp(22px,7vw,36px);width:100%;min-width:0;
-    padding:var(--bezel-padding);border:2px solid #405344;border-radius:6px;
+  .bezel{--bezel-padding:clamp(22px,7vw,36px);width:100%;min-width:0;flex-direction:column;
+    padding:var(--bezel-padding) var(--bezel-padding) 0;border:2px solid #405344;border-radius:6px;
     background:linear-gradient(145deg,#2b3a30,#131e17 45%,#233228);
     box-shadow:0 18px 35px rgba(0,0,0,.65)}
-  .screen{aspect-ratio:1/1;border:2px solid #060d08;border-radius:3px;
+  /* same lettering as the desktop SVG nameplate; fills the bottom strip so it centres both ways */
+  .bezel-logo{display:flex;align-items:center;justify-content:center;height:calc(var(--bezel-padding) + 44px);
+    font:italic 700 17px/1 Georgia,serif;color:#a6b29d;text-shadow:1px 1px 0 #1c251c}
+  .screen{flex:none;aspect-ratio:1/1;border:2px solid #060d08;border-radius:3px;
     box-shadow:inset 0 0 90px #000,inset 0 0 20px #000}
   .boot{padding:16px;gap:12px}
   .boot-log{font-size:12px;line-height:1.4}
