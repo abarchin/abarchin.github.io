@@ -150,7 +150,7 @@ main.wide .list{display:none}
 .list{display:flex;flex-direction:column;gap:2px;overflow-y:auto;min-height:0;scrollbar-width:thin;scrollbar-color:var(--phos-dim) transparent}
 .list button{font:inherit;font-size:17px;text-align:left;color:var(--phos);background:none;border:0;padding:5px 10px;cursor:pointer;text-shadow:inherit;display:flex;justify-content:space-between;gap:10px;flex:none}
 .list button:hover,.list button[aria-current="true"]{background:var(--phos);color:var(--screen);text-shadow:none}
-.detail{overflow-y:auto;min-height:0;scrollbar-width:thin;scrollbar-color:var(--phos-dim) transparent;line-height:1.5;max-width:64ch}
+.detail{overflow-y:auto;overflow-x:hidden;min-height:0;scrollbar-width:thin;scrollbar-color:var(--phos-dim) transparent;line-height:1.5;max-width:64ch}
 .detail h2{font-family:var(--display);font-weight:400;font-size:36px;line-height:1;margin:0 0 4px;letter-spacing:.04em;text-wrap:balance}
 .detail h3{font-family:var(--display);font-weight:400;font-size:22px;margin:14px 0 4px;color:var(--phos-dim);letter-spacing:.12em}
 .detail p{margin:0 0 10px}
