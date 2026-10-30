@@ -1,6 +1,6 @@
 *,*::before,*::after{box-sizing:border-box}
 body{margin:0}
-/* Layout: 3000-series wrist unit. Left control panel (rad gauge, script nameplate, vents, rotary selector), ridged scroll wheel, hooded CRT, button module with three lamp buttons under the screen, ribbed clamp on the right, over a forearm cuff. Phone: just the screen and the button module. */
+/* Desktop: 3000-series wrist unit. Mobile: a compact, square CRT with its button module underneath. */
 :root{
   --metal:#3d3b29;       /* worn olive-brown paint */
   --metal-hi:#5a5840;
@@ -191,34 +191,43 @@ nav.subs::before{content:"";position:absolute;left:26px;right:26px;top:0;height:
   .btn button[aria-pressed="true"]{background:rgba(255,200,100,.2);transform:none;box-shadow:0 0 18px 4px rgba(255,138,26,.5)}
 }
 @media (max-width:760px){
-  body{padding-block:8px;place-items:stretch}
+  body{height:auto;min-height:100svh;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:20px;overflow:auto;
+    padding-top:max(24px,env(safe-area-inset-top,0px));padding-bottom:max(24px,env(safe-area-inset-bottom,0px))}
   body::after{display:none}
-  .unit{height:100%;grid-template-columns:minmax(0,1fr);grid-template-rows:14px minmax(0,1fr) auto;grid-template-areas:"hood" "screen" "module";padding:8px 8px 10px;border-radius:20px}
+  .unit{width:min(560px,100%);height:auto;flex:none;grid-template-columns:minmax(0,1fr);grid-template-rows:12px auto auto;
+    grid-template-areas:"hood" "screen" "module";padding:12px 12px 16px;border-radius:30px 30px 36px 36px}
   .panel,.wheel-slot,.screw{display:none}
-  .hood{height:14px}
-  .bezel{padding:8px;border-radius:22px}
-  .screen{border-radius:16px/22px}
+  .hood{height:12px}
+  .bezel{aspect-ratio:1;padding:10px;border-radius:28px}
+  .screen{border-radius:20px/24px}
+  .boot{padding:16px;gap:12px}
+  .boot-log{font-size:12px;line-height:1.4}
+  .boot-log .boot-brand{font-size:28px}
+  .boot-log .boot-version{font-size:9px;margin-bottom:12px}
+  .boot-log .boot-ready{font-size:20px;margin-top:10px}
   header.hud{padding:10px 12px 0;font-size:17px;gap:8px}
   header.hud .mode{font-size:24px}
+  header.hud .hl{flex-wrap:wrap;row-gap:4px}
   header.hud .hl>span{padding:0 6px}
-  header.hud .clock,header.hud .yrs{display:none}
+  header.hud .hl>.clock,header.hud .hl>.yrs,header.hud .hl>.loc{display:none}
   .xp{width:44px}
   main{grid-template-columns:minmax(0,1fr);grid-template-rows:auto minmax(0,1fr);padding:10px 12px;gap:10px}
   main.wide{grid-template-rows:minmax(0,1fr)}
-  .list{flex-direction:row;flex-wrap:wrap;max-height:92px;gap:4px}
-  .list button{font-size:14px;padding:3px 8px;border:1px solid var(--phos-dim)}
+  .list{flex-direction:row;flex-wrap:nowrap;gap:4px;overflow-x:auto;overflow-y:hidden;padding-bottom:4px}
+  .list button{font-size:14px;white-space:nowrap;padding:5px 8px;border:1px solid var(--phos-dim)}
   .list button small{display:none}
   .detail{font-size:15px}.detail h2{font-size:28px}.big{font-size:48px}
   nav.subs{padding:0 12px 10px;font-size:19px}
   nav.subs::before{left:12px;right:12px}
   .subs button{padding:5px 8px 0}
-  .module{width:min(300px,86%);margin-top:-10px;padding:10px 16px 10px;gap:0}
+  .module{width:min(300px,94%);margin-top:10px;padding:14px 20px 16px;gap:0;border-radius:8px 8px 16px 16px}
   .slots{display:none}
-  .btn button{width:40px;height:40px}
+  .btn button{width:44px;height:44px}
 }
 .sound-toggle{position:fixed;left:max(16px,env(safe-area-inset-left,0px));bottom:max(16px,env(safe-area-inset-bottom,0px));z-index:10;
   display:grid;place-items:center;width:44px;height:44px;border:1px solid #5d6550;border-radius:50%;background:#1b2219;color:#adb79f;cursor:pointer}
 .sound-toggle:hover{color:var(--phos);border-color:var(--phos-dim)}
 .sound-toggle .sound-off,.sound-toggle[aria-pressed="false"] .sound-waves{display:none}
 .sound-toggle[aria-pressed="false"] .sound-off{display:block}
+@media (max-width:760px){.sound-toggle{position:static;flex:none}}
 @media (prefers-reduced-motion:reduce){.boot{display:none}.screen::after{animation:none;display:none}.gauge .needle{animation:none}.selector .knob,.btn button,.wheel{transition:none}}

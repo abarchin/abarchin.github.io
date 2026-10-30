@@ -112,6 +112,7 @@ function render(){const d=D[L],tabs=subsOf(mode);cancelAnimationFrame(raf);updat
   $("sub-"+sub).scrollIntoView({block:"nearest",inline:"nearest"});
   const its=items();$("main").classList.toggle("wide",!its.length);
   $("list").innerHTML=its.map((t,i)=>`<button id="item-${i}" data-i="${i}" aria-current="${i===sel}">${esc(t)}<small>${mode===2&&sub===0&&!d.jobs[i].to?"◆":""}</small></button>`).join("");
+  $("item-"+sel)?.scrollIntoView({block:"nearest",inline:"nearest"});
   detail();
 }
 function detail(){const d=D[L],el=$("detail");
