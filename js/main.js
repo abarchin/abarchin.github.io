@@ -1,4 +1,4 @@
-const LINKS={linkedin:"https://linkedin.com/in/alvarobarchin",github:"https://github.com/alvarikoke99",email:"alvarobarchin.work@gmail.com"};
+const LINKS={linkedin:"https://linkedin.com/in/alvarobarchin",github:"https://github.com/abarchin",email:"alvarobarchin.work@gmail.com"};
 const START=new Date(2021,3,1); // first engineering role
 const D={
  en:{modes:["STATS","ITEMS","DATA"],subs:[["Status","Perks","Education"],null,["Quests","Local Map","Radio"]],
@@ -43,7 +43,7 @@ D.es.jobs=[
  {co:"Afronta Quality Solutions",role:"Backend Junior Software Developer",from:"Abr 2021",to:"Dic 2022",b:["Backend de microservicios para una aplicación POS de un minorista multinacional en Java (Spring Boot).","Lideré el desarrollo de una app de escaneo para Android, desde los requisitos hasta el despliegue.","Aumenté la eficiencia operativa un 15% con un sistema full-stack de gestión de empleados con MySQL."]},
  {co:"Telefónica",role:"Técnico de Soporte IT",from:"Sep 2020",to:"Oct 2020",b:["Configuración y despliegue de aplicaciones empresariales en tabletas Android.","Gestión de inventario y liderazgo del equipo de despliegue."]}];
 
-let L="en",mode=0,sub=0,sel=0,raf=0,knobDeg=0,wheelPos=0;
+let L="en",mode=0,sub=0,sel=0,raf=0,wheelPos=0;
 const $=id=>document.getElementById(id);
 const esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
 const reduce=matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -91,11 +91,13 @@ function items(){const d=D[L];
   if(sub===2)return d.stations.map(s=>s[0]);
   return [];
 }
-function render(){const d=D[L];cancelAnimationFrame(raf);updateSoundButton();
+function render(){const d=D[L],tabs=subsOf(mode);cancelAnimationFrame(raf);updateSoundButton();
+  // The fixed crescent scale runs clockwise from 45 to 195 degrees.
+  $("knob").style.transform=`rotate(${45+sub*150/Math.max(1,tabs.length-1)}deg)`;
   const y=(Date.now()-START)/(365.25*864e5),yrs=Math.floor(y),now=new Date();
   $("hud").innerHTML=`<span class="mode">${d.modes[mode]}</span><span class="hl"><span>${d.lvl} ${yrs}</span><span>XP <span class="xp"><i style="width:${Math.round(y%1*100)}%"></i></span></span><span class="yrs">${yrs} ${d.yrs}</span><span class="loc">ALCALÁ</span><span class="clock" id="clock">${now.toTimeString().slice(0,5)}</span><span class="lang" role="group" aria-label="Language"><button id="lang-en" aria-pressed="${L==="en"}" data-l="en">EN</button><button id="lang-es" aria-pressed="${L==="es"}" data-l="es">ES</button></span></span>`;
   $("btns").innerHTML=d.modes.map((m,i)=>`<div class="btn"><label for="btn-${i}">${m}</label><button id="btn-${i}" data-m="${i}" aria-pressed="${i===mode}" aria-label="${m}"></button></div>`).join("");
-  $("subs").innerHTML=subsOf(mode).map((s,i)=>`<button role="tab" id="sub-${i}" data-s="${i}" aria-selected="${i===sub}">${esc(s)}</button>`).join("");
+  $("subs").innerHTML=tabs.map((s,i)=>`<button role="tab" id="sub-${i}" data-s="${i}" aria-selected="${i===sub}">${esc(s)}</button>`).join("");
   $("sub-"+sub).scrollIntoView({block:"nearest",inline:"nearest"});
   const its=items();$("main").classList.toggle("wide",!its.length);
   $("list").innerHTML=its.map((t,i)=>`<button id="item-${i}" data-i="${i}" aria-current="${i===sel}">${esc(t)}<small>${mode===2&&sub===0&&!d.jobs[i].to?"◆":""}</small></button>`).join("");
@@ -140,7 +142,7 @@ function drawOsc(k){const c=$("osc"),x=c.getContext("2d"),G=css("--phos");let t=
     x.stroke();x.shadowBlur=0;t+=.06;if(!reduce)raf=requestAnimationFrame(frame)};frame();
 }
 function setMode(m){mode=(m+3)%3;sub=0;sel=0;render();playSound("mode")}
-function setSub(s){const n=subsOf(mode).length;sub=(s+n)%n;sel=0;knobDeg+=45;$("knob").style.transform=`rotate(${knobDeg}deg)`;render();playSound("tab")}
+function setSub(s){const n=subsOf(mode).length;sub=(s+n)%n;sel=0;render();playSound("tab")}
 function setSel(i,dir=1,sound="scroll"){const n=items().length;if(!n)return;sel=(i+n)%n;wheelPos+=dir*10;$("wheel").style.backgroundPosition=`0 0,0 ${wheelPos}px`;render();$("item-"+sel)?.focus({preventScroll:true});playSound(mode===2&&sub===2?"tuner":sound)}
 $("btns").addEventListener("click",e=>{const b=e.target.closest("button[data-m]");if(b)setMode(+b.dataset.m)});
 $("subs").addEventListener("click",e=>{const b=e.target.closest("button[data-s]");if(b)setSub(+b.dataset.s)});

@@ -152,7 +152,8 @@ nav.subs::before{content:"";position:absolute;left:26px;right:26px;top:0;height:
   .screen{zoom:var(--screen-scale,1)}
   .selector .knob,.wheel,.flash{position:absolute;inset:auto;margin:0;padding:0;border:0;
     background:none;box-shadow:none}
-  .selector .knob{left:10.53%;top:52.59%;width:7.37%;height:auto;aspect-ratio:1}
+  .selector .knob{left:9.473684%;top:52%;width:8.842105%;height:auto;aspect-ratio:1;transform:rotate(45deg)}
+  .selector .knob svg{display:block;width:100%;height:100%;overflow:visible;pointer-events:none}
   .selector .knob::after{display:none}
   .wheel{left:25.05%;top:30.22%;width:2.53%;height:18.81%}
   .flash{left:22.95%;top:66.67%;width:2.84%;height:auto;aspect-ratio:1}
@@ -194,4 +195,4 @@ nav.subs::before{content:"";position:absolute;left:26px;right:26px;top:0;height:
 .sound-toggle:hover{color:var(--phos);border-color:var(--phos-dim)}
 .sound-toggle .sound-off,.sound-toggle[aria-pressed="false"] .sound-waves{display:none}
 .sound-toggle[aria-pressed="false"] .sound-off{display:block}
-@media (prefers-reduced-motion:reduce){.screen::after{animation:none;display:none}.gauge .needle{animation:none}.knob,.btn button,.wheel{transition:none}}
+@media (prefers-reduced-motion:reduce){.screen::after{animation:none;display:none}.gauge .needle{animation:none}.selector .knob,.btn button,.wheel{transition:none}}
